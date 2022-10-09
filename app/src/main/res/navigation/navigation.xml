@@ -54,4 +54,9 @@
         android:name="com.example.reegoandroid.fragments.SensorFragment"
         android:label="fragment_sensor"
         tools:layout="@layout/fragment_sensor" />
+    <fragment
+        android:id="@+id/myInformationFragment"
+        android:name="com.example.reegoandroid.fragments.MyInformationFragment"
+        android:label="fragment_my_information"
+        tools:layout="@layout/fragment_my_information" />
 </navigation>
