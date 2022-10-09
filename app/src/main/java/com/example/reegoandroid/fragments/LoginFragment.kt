@@ -50,6 +50,7 @@ class LoginFragment : Fragment() {
 
         btnHelp.setOnClickListener{
             val navigateLoginToHelp = LoginFragmentDirections.actionLoginFragmentToHelpFragment()
+
             v.findNavController().navigate(navigateLoginToHelp)
         }
 
