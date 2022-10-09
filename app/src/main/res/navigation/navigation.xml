@@ -14,8 +14,8 @@
             android:id="@+id/action_loginFragment_to_helpFragment"
             app:destination="@id/helpFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_singleIrrigationFragment"
-            app:destination="@id/singleIrrigationFragment" />
+            android:id="@+id/action_loginFragment_to_singleNoteFragment"
+            app:destination="@id/singleNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/helpFragment"
@@ -47,4 +47,9 @@
         android:name="com.example.reegoandroid.fragments.SingleIrrigationFragment"
         android:label="fragment_single_irrigation"
         tools:layout="@layout/fragment_single_irrigation" />
+    <fragment
+        android:id="@+id/singleNoteFragment"
+        android:name="com.example.reegoandroid.fragments.SingleNoteFragment"
+        android:label="fragment_single_note"
+        tools:layout="@layout/fragment_single_note" />
 </navigation>
