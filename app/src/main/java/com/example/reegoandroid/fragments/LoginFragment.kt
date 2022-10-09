@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.reegoandroid.R
 import com.example.reegoandroid.viewmodels.LoginViewModel
 
@@ -16,6 +17,7 @@ class LoginFragment : Fragment() {
     lateinit var v: View
     private lateinit var txtLoginTitulo : TextView
     private lateinit var btnLogin: Button
+    private lateinit var btnHelp: Button
 
     companion object {
         fun newInstance() = LoginFragment()
@@ -31,6 +33,7 @@ class LoginFragment : Fragment() {
         //findViewByid y codigo
         txtLoginTitulo = v.findViewById(R.id.txtLoginTitle)
         btnLogin = v.findViewById(R.id.btnLogin)
+        btnHelp = v.findViewById(R.id.btnHelp)
 
         return v
     }
@@ -44,6 +47,13 @@ class LoginFragment : Fragment() {
             loginViewModel.iniciarSesion()
             txtLoginTitulo.text = loginViewModel.tituloLogin
         }
+
+        btnHelp.setOnClickListener{
+            val navigateLoginToHelp = LoginFragmentDirections.actionLoginFragmentToHelpFragment()
+            v.findNavController().navigate(navigateLoginToHelp)
+        }
+
+
     }
 
 
