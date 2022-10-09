@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.reegoandroid.R
 import com.example.reegoandroid.viewmodels.HelpViewModel
 
@@ -27,6 +28,14 @@ class HelpFragment : Fragment() {
         //findViewById & codigo
         txtHelp = v.findViewById(R.id.txtLabelHelp)
         return v
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+       txtHelp.text = helpViewModel.textHelp
+
+
     }
 
 
