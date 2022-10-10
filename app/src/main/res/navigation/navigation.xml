@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.reegoandroid.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.example.reegoandroid.fragments.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" />
+    <fragment
+        android:id="@+id/backofficeFragment"
+        android:name="com.example.reegoandroid.fragments.BackofficeFragment"
+        android:label="fragment_backoffice"
+        tools:layout="@layout/fragment_backoffice" />
+    <fragment
+        android:id="@+id/userListFragment"
+        android:name="com.example.reegoandroid.fragments.UserListFragment"
+        android:label="fragment_user_list"
+        tools:layout="@layout/fragment_user_list" />
+    <fragment
+        android:id="@+id/singleUserFragment"
+        android:name="com.example.reegoandroid.fragments.SingleUserFragment"
+        android:label="fragment_single_user"
+        tools:layout="@layout/fragment_single_user" />
+    <fragment
+        android:id="@+id/irrigationListFragment"
+        android:name="com.example.reegoandroid.fragments.IrrigationListFragment"
+        android:label="fragment_irrigation_list"
+        tools:layout="@layout/fragment_irrigation_list" />
+    <fragment
+        android:id="@+id/singleIrrigationFragment"
+        android:name="com.example.reegoandroid.fragments.SingleIrrigationFragment"
+        android:label="fragment_single_irrigation"
+        tools:layout="@layout/fragment_single_irrigation" />
+    <fragment
+        android:id="@+id/singleNoteFragment"
+        android:name="com.example.reegoandroid.fragments.SingleNoteFragment"
+        android:label="fragment_single_note"
+        tools:layout="@layout/fragment_single_note" />
+    <fragment
+        android:id="@+id/sensorFragment"
+        android:name="com.example.reegoandroid.fragments.SensorFragment"
+        android:label="fragment_sensor"
+        tools:layout="@layout/fragment_sensor" />
+    <fragment
+        android:id="@+id/myInformationFragment"
+        android:name="com.example.reegoandroid.fragments.MyInformationFragment"
+        android:label="fragment_my_information"
+        tools:layout="@layout/fragment_my_information" />
+</navigation>
