@@ -7,23 +7,28 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SensorViewModel() : ViewModel() {
+class SensorViewModel(
+    private val repository : FiwareRepository = FiwareRepository(FiwareApi.instance!!)
+) : ViewModel() {
+    init {
+        this@SensorViewModel.getSetApiData()
+    }
+
     private  var temperature: String = ""
     private  var humidity: String = ""
-    private  var acidity: String = ""
-    internal var dataString: String = "Loading..."
-
+    private  var acidity:  String = ""
+    internal var dataString: String = "Cargando..."
 
     internal fun setSensorData(acidity: String, humidity: String, temperature: String) {
         this.acidity = acidity
         this.humidity = humidity
         this.temperature = temperature
 
-        this.dataString = "Acidity: $acidity, Humidity: $humidity, Temperature: $temperature"
+        this.dataString = "Datos de Sensor"
     }
 
     internal fun getSetApiData() {
-        val repository = FiwareRepository(FiwareApi.instance!!)
+
         val scope = CoroutineScope(Dispatchers.Default)
 
         scope.launch(Dispatchers.Default) {
@@ -49,6 +54,18 @@ class SensorViewModel() : ViewModel() {
                 println("Error: ${it.message}")
             }
         }
+    }
+
+    internal fun getTemp():String {
+        return this.temperature
+    }
+
+    internal fun getAcid():String {
+        return this.acidity
+    }
+
+    internal fun getHum():String {
+        return this.humidity
     }
     
 }
