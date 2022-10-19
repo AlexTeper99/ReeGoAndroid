@@ -1,5 +1,6 @@
 package com.example.reegoandroid.viewmodels
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.reegoandroid.viewmodels.fiware.FiwareApi
 import com.example.reegoandroid.viewmodels.fiware.FiwareRepository
@@ -14,17 +15,25 @@ class SensorViewModel(
         this@SensorViewModel.getSetApiData()
     }
 
-    private  var temperature: String = ""
-    private  var humidity: String = ""
-    private  var acidity:  String = ""
-    internal var dataString: String = "Cargando..."
+    val temperature: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
+    val humidity: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
+    val acidity: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
 
     internal fun setSensorData(acidity: String, humidity: String, temperature: String) {
-        this.acidity = acidity
-        this.humidity = humidity
-        this.temperature = temperature
+        this.acidity.postValue(acidity)
 
-        this.dataString = "Datos de Sensor"
+        this.humidity.postValue(humidity)
+
+        this.temperature.postValue(temperature)
+
     }
 
     internal fun getSetApiData() {
@@ -56,16 +65,6 @@ class SensorViewModel(
         }
     }
 
-    internal fun getTemp():String {
-        return this.temperature
-    }
 
-    internal fun getAcid():String {
-        return this.acidity
-    }
-
-    internal fun getHum():String {
-        return this.humidity
-    }
     
 }

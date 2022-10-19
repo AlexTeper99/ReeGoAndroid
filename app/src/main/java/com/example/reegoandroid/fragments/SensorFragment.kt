@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.reegoandroid.R
 import com.example.reegoandroid.viewmodels.SensorViewModel
 
@@ -34,12 +35,23 @@ class SensorFragment : Fragment() {
         acIndicator = v.findViewById(R.id.acidIndicator)
         huIndicator = v.findViewById(R.id.humiIndicator)
 
+        titleText.text = "Datos del Sensor"
         sensorViewModel.getSetApiData()
 
-        titleText.text   = sensorViewModel.dataString
-        teIndicator.text = "Temperatura Ambiente: " + sensorViewModel.getTemp() + "° C"
-        huIndicator.text = "Humedad del Suelo: " + sensorViewModel.getHum() + " %"
-        acIndicator.text = "PH del Suelo: " + sensorViewModel.getAcid()
+        val teObserver = Observer<String> { temperature ->
+            teIndicator.text = "Temperatura Ambiente: $temperature° C"
+        }
+        val huObserver = Observer<String> { humidity ->
+            huIndicator.text = "Humedad del Suelo: $humidity %"
+        }
+        val acObserver = Observer<String> { acidity ->
+            acIndicator.text = "PH del Suelo: $acidity"
+        }
+
+        // Observe model data
+        sensorViewModel.temperature.observe(viewLifecycleOwner, teObserver)
+        sensorViewModel.humidity.observe(viewLifecycleOwner, huObserver)
+        sensorViewModel.acidity.observe(viewLifecycleOwner, acObserver)
 
         return v
 
