@@ -16,16 +16,20 @@ class IrrigationListViewModel( private val nodeRepository: NodeRepository = Node
     }
 
     //Declaro las propiedades
-    val irrigationList: MutableLiveData<MutableList<IrrigationData>> by lazy {
-        MutableLiveData<MutableList<IrrigationData>>()
+     var irrigationList: MutableList<IrrigationData> = mutableListOf()
+
+    fun getVariableIrrigationList(): MutableList<IrrigationData> {
+        return irrigationList
     }
 
     internal fun setIrrigationList(list: MutableList<IrrigationData>) {
-        this.irrigationList.postValue(list)
+        this.irrigationList = list
     }
 
 
     internal fun getIrrigationList() {
+
+
         val scope = CoroutineScope(Dispatchers.Default)
 
         scope.launch(Dispatchers.Default) {

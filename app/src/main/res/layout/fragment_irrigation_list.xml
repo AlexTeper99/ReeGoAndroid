@@ -7,16 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".fragments.IrrigationListFragment">
 
-    <TextView
-        android:id="@+id/txtIrrigationsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="94dp"
-        android:layout_marginEnd="148dp"
-        android:layout_marginBottom="618dp"
-        android:text="Riegos Realizados"
-        android:textSize="24sp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recIrrigation"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
