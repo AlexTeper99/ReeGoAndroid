@@ -32,6 +32,10 @@ class IrrigationListFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        irrigationListViewModel.getIrrigationList();
+
+
+
         txtTitle.text = "Riegos Realizadoss"
     }
 
