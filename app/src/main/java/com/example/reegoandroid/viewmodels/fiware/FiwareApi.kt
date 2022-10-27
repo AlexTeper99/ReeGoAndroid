@@ -37,5 +37,4 @@ interface FiwareApi {
         @Query("servicePathHeader") servicePathHeader: String = "/"
     ): SensorData
 
-
 }

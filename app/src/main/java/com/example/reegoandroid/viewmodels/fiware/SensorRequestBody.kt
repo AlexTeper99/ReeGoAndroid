@@ -10,4 +10,3 @@ data class SensorRequestBody(
     @Json(name = "servicePathHeader")
     val servicePathHeader: String,
 )
-
