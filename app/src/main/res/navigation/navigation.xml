@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_loginFragment_to_helpFragment"
             app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/actionLoginFragmentToUserListFragment"
+            app:destination="@id/userListFragment" />
     </fragment>
     <fragment
         android:id="@+id/helpFragment"

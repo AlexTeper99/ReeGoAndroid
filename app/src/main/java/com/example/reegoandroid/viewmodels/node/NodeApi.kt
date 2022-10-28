@@ -12,7 +12,8 @@ interface NodeApi {
     companion object {
         val instance: NodeApi? = Retrofit
             .Builder()
-            .baseUrl("https://mocki.io/v1/")
+            .baseUrl("http://192.168.0.39/")
+        //.baseUrl("https://mocki.io/v1/")
             .addConverterFactory(MoshiConverterFactory.create())
             .client(OkHttpClient.Builder().build())
             .build()
@@ -29,4 +30,9 @@ interface NodeApi {
 
     ): ClimateData
 
+    // User List Endpoint
+    @GET("users")
+    suspend fun getUserList(
+        @Header("Accept") fiwareServicePath: String= "application/json",
+    ): MutableList<UserData>
 }
