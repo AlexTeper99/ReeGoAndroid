@@ -20,6 +20,14 @@ class SensorFragment : Fragment() {
     private lateinit var acIndicator : TextView
     private lateinit var huIndicator : TextView
 
+    private lateinit var cropType : TextView
+    private lateinit var minTemp : TextView
+    private lateinit var minPh : TextView
+    private lateinit var maxHum : TextView
+    // private lateinit var idPlot : TextView
+    // private lateinit var idCrop : TextView
+    private lateinit var plotDesc : TextView
+
 
     private val sensorViewModel : SensorViewModel by viewModels()
 
@@ -29,6 +37,7 @@ class SensorFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.fragment_sensor, container, false)
 
+        // Sensor Info
         titleText = v.findViewById(R.id.txtSensorTitle)
 
         teIndicator = v.findViewById(R.id.tempIndicator)
@@ -37,7 +46,7 @@ class SensorFragment : Fragment() {
 
         titleText.text = "Datos del Sensor"
         sensorViewModel.getSetApiData()
-
+        
         val teObserver = Observer<String> { temperature ->
             teIndicator.text = "Temperatura Ambiente: $temperature° C"
         }
@@ -52,6 +61,39 @@ class SensorFragment : Fragment() {
         sensorViewModel.temperature.observe(viewLifecycleOwner, teObserver)
         sensorViewModel.humidity.observe(viewLifecycleOwner, huObserver)
         sensorViewModel.acidity.observe(viewLifecycleOwner, acObserver)
+
+        /// Plot Info
+
+        sensorViewModel.getSetPlotData()
+
+        cropType = v.findViewById(R.id.cropType)
+        minTemp = v.findViewById(R.id.minTemp)
+        minPh = v.findViewById(R.id.minPh)
+        maxHum = v.findViewById(R.id.maxHum)
+        plotDesc = v.findViewById(R.id.plotDesc)
+
+        val cropTypeObserver = Observer<String> { cropType ->
+            this.cropType.text = "Tipo de Cultivo: $cropType"
+        }
+        val minTempObserver = Observer<String> { minTemp ->
+            this.minTemp.text = "Temperatura Mínima: $minTemp° C"
+        }
+        val minPhObserver = Observer<String> { minPh ->
+            this.minPh.text = "PH Mínimo: $minPh"
+        }
+        val maxHumObserver = Observer<String> { maxHum ->
+            this.maxHum.text = "Humedad Máxima: $maxHum %"
+        }
+        val descObserver = Observer<String> { plotDesc ->
+            this.plotDesc.text = "Descripción: $plotDesc"
+        }
+
+        sensorViewModel.cropType.observe(viewLifecycleOwner, cropTypeObserver)
+        sensorViewModel.minTemp.observe(viewLifecycleOwner, minTempObserver)
+        sensorViewModel.minPh.observe(viewLifecycleOwner, minPhObserver)
+        sensorViewModel.maxHum.observe(viewLifecycleOwner, maxHumObserver)
+        sensorViewModel.desc.observe(viewLifecycleOwner, descObserver)
+
 
         return v
 
