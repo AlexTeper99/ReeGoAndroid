@@ -13,4 +13,18 @@ class FiwareRepository(private val api: FiwareApi) {
             Result.failure(e)
         }
     }
+
+    // returns plot data
+    suspend fun getPlotData(plotId:String): Result<PlotData>
+    {
+        return try {
+
+            val response = api.getPlotData(plotId)
+            Result.success(response)
+        
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
 }

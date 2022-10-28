@@ -5,6 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface FiwareApi {
@@ -19,6 +20,7 @@ interface FiwareApi {
             .create(FiwareApi::class.java)
     }
 
+
     // example post some data via SensorRequestBody
 //    @POST("iot")
 //    suspend fun getSensorData(
@@ -29,6 +31,8 @@ interface FiwareApi {
 //                                           "/")
 //        ): SensorData
 
+
+
     @GET("iot")
     suspend fun getSensorData(
         @Header("Content-Type") cType: String= "application/json",
@@ -36,5 +40,11 @@ interface FiwareApi {
         @Query("serviceHeader") serviceHeader: String = "sensor",
         @Query("servicePathHeader") servicePathHeader: String = "/"
     ): SensorData
+
+    @GET("plot/{plotId}")
+    suspend fun getPlotData(
+        @Path("plotId") plotId: String,
+        @Header("Content-Type") cType: String= "application/json",
+    ): PlotData
 
 }
