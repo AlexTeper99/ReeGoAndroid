@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.reegoandroid.R
 import com.example.reegoandroid.adapters.UserAdapter
 import com.example.reegoandroid.viewmodels.UserListViewModel
-import com.example.reegoandroid.viewmodels.node.UserData
 
 class UserListFragment : Fragment() {
     lateinit var v: View
@@ -20,9 +19,6 @@ class UserListFragment : Fragment() {
 
     lateinit var userRecyclerView: RecyclerView
     lateinit var userAdapter: UserAdapter
-    var users : MutableList<UserData> = mutableListOf()
-
-
 
     private val userListViewModel : UserListViewModel by viewModels()
 
@@ -31,26 +27,6 @@ class UserListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         v =  inflater.inflate(R.layout.fragment_user_list, container, false)
-
-        users.add(UserData("20-20-20", "jose@mail.com",23,1,false,"Jose Perez","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
-        users.add(UserData("20-20-20", "nose@mail.com",26,1,false,"Maria Toledo","123","20-20-22"))
 
         userRecyclerView = v.findViewById(R.id.recViewUsers)
 
@@ -63,13 +39,19 @@ class UserListFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        // TODO GET LIST FROM API AND SET IT TO THE RECYCLER VIEW // live data issue
-        //userListViewModel.getAllUsers()
-        //userAdapter = UserAdapter(userListViewModel.userList)
+        userListViewModel.getAllUsers()
 
-        userAdapter = UserAdapter(users)
-        userRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        userRecyclerView.adapter = userAdapter
+        userListViewModel.userListLive.observe(viewLifecycleOwner) { userList ->
+            
+            userAdapter = UserAdapter(userList.toMutableList())
+            userAdapter.notifyDataSetChanged()
+
+            userRecyclerView.apply {
+                layoutManager = LinearLayoutManager(context)
+                adapter = userAdapter
+            }
+
+        }
 
     }
 

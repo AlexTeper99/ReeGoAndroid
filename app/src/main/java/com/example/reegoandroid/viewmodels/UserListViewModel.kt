@@ -1,5 +1,6 @@
 package com.example.reegoandroid.viewmodels
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.reegoandroid.viewmodels.node.NodeApi
 import com.example.reegoandroid.viewmodels.node.NodeRepository
@@ -16,8 +17,8 @@ class UserListViewModel(private val nodeRepository: NodeRepository = NodeReposit
 
     var userList: MutableList<UserData> = mutableListOf()
 
-    internal fun setUserList(list: MutableList<UserData>) {
-        this.userList = list
+    val userListLive: MutableLiveData<List<UserData>> by lazy {
+        MutableLiveData<List<UserData>>()
     }
 
     internal fun getAllUsers() {
@@ -29,16 +30,18 @@ class UserListViewModel(private val nodeRepository: NodeRepository = NodeReposit
             val result = nodeRepository.getAllusers()
 
             result.onSuccess {
-                val userList = it
+
+                userList = it
+                // observe in view
+                userListLive.postValue(it)
+
                 println("User list, from Node Api")
-                println("---------------------------")
+                println("----- begin ------")
+                for (user in userList) {
+                    println(user.name + " " + user.email)
+                }
+                println("----- end ------")
 
-                println(userList[0].name)
-                println(userList[1].name)
-                println(userList[2].name)
-                println(userList[3].name)
-
-                this@UserListViewModel.setUserList(userList)
 
             }.onFailure {
                 println("ERROR En la llamada al Api /users")
