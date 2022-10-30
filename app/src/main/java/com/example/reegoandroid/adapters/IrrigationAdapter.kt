@@ -17,9 +17,11 @@ class IrrigationAdapter(var irrigationList: MutableList<IrrigationData>) : Recyc
             this.view = v
         }
 
-        fun setWater(liters : String){
+        fun setItem(liters : String, date: String){
             var txtWater : TextView = view.findViewById(R.id.txtWater)
+            var txtDate : TextView = view.findViewById(R.id.txtDateValue)
             txtWater.text = liters
+            txtDate.text = date
         }
     }
 
@@ -30,7 +32,7 @@ class IrrigationAdapter(var irrigationList: MutableList<IrrigationData>) : Recyc
 
     override fun onBindViewHolder(holder: IrrigationHolder, position: Int) {
 
-        holder.setWater(irrigationList[position].waterUsed.toString())
+        holder.setItem(irrigationList[position].waterUsed.toString(),irrigationList[position].createdAt.toString() )
     }
 
     override fun getItemCount(): Int {
