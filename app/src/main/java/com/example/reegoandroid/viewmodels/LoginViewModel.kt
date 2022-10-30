@@ -1,11 +1,13 @@
 package com.example.reegoandroid.viewmodels
 
 import androidx.lifecycle.ViewModel
+import com.example.reegoandroid.fragments.LoginFragment
 
 class LoginViewModel : ViewModel() {
     var tituloLogin = "INICIAR SESION"
 
-    fun iniciarSesion() {
-        tituloLogin = "INICIO SESION metodo"
+    fun login() {
+        tituloLogin = "SESION INICIADA"
+
     }
 }
