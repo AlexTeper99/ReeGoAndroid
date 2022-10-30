@@ -20,15 +20,17 @@ import com.example.reegoandroid.viewmodels.node.IrrigationData
 class IrrigationListFragment : Fragment() {
     lateinit var v: View
 
+    private val irrigationListViewModel : IrrigationListViewModel by viewModels()
+
     //4. inicializar el adapter
-    lateinit var adapter: IrrigationAdapter
-    lateinit var recyclerView: RecyclerView
+    lateinit var irrigationAdapter: IrrigationAdapter
+    lateinit var irrigationRecyclerView: RecyclerView
 
     //lateinit var irrigationList : MutableLiveData<MutableList<IrrigationData>>
 
     //var irrigationList: MutableLiveData<MutableList<IrrigationData>>
 
-    private val irrigationListViewModel : IrrigationListViewModel by viewModels()
+
 
 
     override fun onCreateView(
@@ -37,11 +39,11 @@ class IrrigationListFragment : Fragment() {
     ): View? {
         v =  inflater.inflate(R.layout.fragment_irrigation_list, container, false)
 
-        recyclerView = v.findViewById(R.id.recIrrigation)
+        irrigationRecyclerView = v.findViewById(R.id.recIrrigation)
 
 
 
-        irrigationListViewModel.getIrrigationList()
+
 
 
 
@@ -53,11 +55,22 @@ class IrrigationListFragment : Fragment() {
 
         irrigationListViewModel.getIrrigationList();
 
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        irrigationListViewModel.getIrrigationList()
-        adapter = IrrigationAdapter(irrigationListViewModel.getVariableIrrigationList())
-        recyclerView.adapter = adapter
+       // recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        // irrigationListViewModel.getIrrigationList()
+    //    adapter = IrrigationAdapter(irrigationListViewModel.getVariableIrrigationList())
+     //   recyclerView.adapter = adapter
+        irrigationListViewModel.irrigationListLive.observe(viewLifecycleOwner) { irrigationList ->
 
+           // userAdapter = UserAdapter(userList.toMutableList())
+            irrigationAdapter = IrrigationAdapter(irrigationList.toMutableList())
+            irrigationAdapter.notifyDataSetChanged()
+
+            irrigationRecyclerView.apply {
+                layoutManager = LinearLayoutManager(context)
+                adapter = irrigationAdapter
+            }
+
+        }
     }
 
 }

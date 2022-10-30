@@ -32,7 +32,7 @@ interface NodeApi {
 
     //GET IRRIGATIONS LIST ENDPOINT
     @GET("8e208460-026c-4c66-aeda-702497467417")
-    suspend fun getIrrigationList() : MutableList<IrrigationData>
+    suspend fun getIrrigationList() : List<IrrigationData>
 
 
 

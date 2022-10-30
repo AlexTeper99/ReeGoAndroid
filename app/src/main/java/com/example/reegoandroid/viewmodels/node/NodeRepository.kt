@@ -15,7 +15,7 @@ class NodeRepository(private val api: NodeApi) {
         }
     }
 
-    suspend fun getIrrigationList(): Result<MutableList<IrrigationData>>
+    suspend fun getIrrigationList(): Result<List<IrrigationData>>
     {
         return try {
 

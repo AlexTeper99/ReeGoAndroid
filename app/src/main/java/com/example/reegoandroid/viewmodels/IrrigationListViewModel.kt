@@ -18,12 +18,8 @@ class IrrigationListViewModel( private val nodeRepository: NodeRepository = Node
     //Declaro las propiedades
      var irrigationList: MutableList<IrrigationData> = mutableListOf()
 
-    fun getVariableIrrigationList(): MutableList<IrrigationData> {
-        return irrigationList
-    }
-
-    internal fun setIrrigationList(list: MutableList<IrrigationData>) {
-        this.irrigationList = list
+    val irrigationListLive: MutableLiveData<List<IrrigationData>> by lazy {
+        MutableLiveData<List<IrrigationData>>()
     }
 
 
@@ -37,6 +33,7 @@ class IrrigationListViewModel( private val nodeRepository: NodeRepository = Node
 
             result.onSuccess {
                 val irrigationList = it
+                irrigationListLive.postValue(it)
                 println("Irrigation List- From Climate Fake Api")
                 println("---------------------------")
                 println(irrigationList[0].idPlot.toString())
@@ -45,7 +42,6 @@ class IrrigationListViewModel( private val nodeRepository: NodeRepository = Node
                 println(irrigationList[1].idPlot.toString())
                 // All have to be Strings in the mutable lists
 
-                this@IrrigationListViewModel.setIrrigationList(irrigationList)
 
             }.onFailure {
                 println("ERROR En la llamada al api")
