@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.reegoandroid.R
@@ -16,6 +17,7 @@ import com.example.reegoandroid.adapters.IrrigationAdapter
 import com.example.reegoandroid.viewmodels.BackofficeViewModel
 import com.example.reegoandroid.viewmodels.IrrigationListViewModel
 import com.example.reegoandroid.viewmodels.node.IrrigationData
+import com.google.android.material.snackbar.Snackbar
 
 class IrrigationListFragment : Fragment() {
     lateinit var v: View
@@ -62,7 +64,10 @@ class IrrigationListFragment : Fragment() {
         irrigationListViewModel.irrigationListLive.observe(viewLifecycleOwner) { irrigationList ->
 
            // userAdapter = UserAdapter(userList.toMutableList())
-            irrigationAdapter = IrrigationAdapter(irrigationList.toMutableList())
+            irrigationAdapter = IrrigationAdapter(irrigationList.toMutableList()) { pos ->
+                val action = IrrigationListFragmentDirections.actionIrrigationListFragmentToSingleIrrigationFragment2()
+                v.findNavController().navigate(action)
+            }
             irrigationAdapter.notifyDataSetChanged()
 
             irrigationRecyclerView.apply {

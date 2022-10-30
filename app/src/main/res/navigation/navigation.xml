@@ -24,7 +24,11 @@
         android:id="@+id/irrigationListFragment"
         android:name="com.example.reegoandroid.fragments.IrrigationListFragment"
         android:label="fragment_irrigation_list"
-        tools:layout="@layout/fragment_irrigation_list" />
+        tools:layout="@layout/fragment_irrigation_list" >
+        <action
+            android:id="@+id/action_irrigationListFragment_to_singleIrrigationFragment2"
+            app:destination="@id/singleIrrigationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/singleIrrigationFragment"
         android:name="com.example.reegoandroid.fragments.SingleIrrigationFragment"
