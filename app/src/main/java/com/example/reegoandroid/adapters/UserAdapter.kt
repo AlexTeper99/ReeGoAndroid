@@ -28,7 +28,7 @@ class UserAdapter(var userList: MutableList<UserData>,  var onClick : (Int) -> U
         }
 
         fun getCard() : CardView {
-            return view.findViewById(R.id.card)
+            return view.findViewById(R.id.userCard)
         }
 
 

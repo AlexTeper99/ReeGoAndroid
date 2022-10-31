@@ -44,10 +44,11 @@ class UserListFragment : Fragment() {
 
         userListViewModel.userListLive.observe(viewLifecycleOwner) { userList ->
             
-            userAdapter = UserAdapter(userList.toMutableList()){ pos ->
-                val action = UserListFragmentDirections.actionUserListFragment2ToSingleUserFragment2()
+            userAdapter = UserAdapter(userList.toMutableList()){ pos: Int ->
+                val action = UserListFragmentDirections.actionUserListFragment2ToSingleUserFragment2(userList[pos].id.toString())
                 v.findNavController().navigate(action)
             }
+
             userAdapter.notifyDataSetChanged()
 
             userRecyclerView.apply {

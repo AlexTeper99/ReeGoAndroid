@@ -43,5 +43,7 @@
         android:id="@+id/singleUserFragment2"
         android:name="com.example.reegoandroid.fragments.SingleUserFragment"
         android:label="fragment_single_user"
-        tools:layout="@layout/fragment_single_user" />
+        tools:layout="@layout/fragment_single_user" >
+        <argument android:name="userId" />
+    </fragment>
 </navigation>
