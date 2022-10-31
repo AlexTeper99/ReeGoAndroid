@@ -8,4 +8,6 @@ class LoginViewModel : ViewModel() {
     fun iniciarSesion() {
         tituloLogin = "INICIO SESION metodo"
     }
+
+
 }

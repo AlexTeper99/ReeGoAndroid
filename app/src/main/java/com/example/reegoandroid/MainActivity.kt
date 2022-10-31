@@ -12,7 +12,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment : NavHostFragment
     //vistas pantallas
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

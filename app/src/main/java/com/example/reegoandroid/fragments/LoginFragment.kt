@@ -44,16 +44,18 @@ class LoginFragment : Fragment() {
         txtLoginTitulo.text = loginViewModel.tituloLogin
 
         btnLogin.setOnClickListener{
-            loginViewModel.iniciarSesion()
-            txtLoginTitulo.text = loginViewModel.tituloLogin
+
+            v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
+
         }
 
+        /*
         btnHelp.setOnClickListener{
             val navigateLoginToHelp = LoginFragmentDirections.actionLoginFragmentToHelpFragment()
 
             v.findNavController().navigate(navigateLoginToHelp)
         }
-
+*/
 
     }
 

@@ -1,5 +1,6 @@
 package com.example.reegoandroid.viewmodels.node
 
+import androidx.lifecycle.MutableLiveData
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -19,7 +20,7 @@ interface NodeApi {
             .create(NodeApi::class.java)
     }
 
-    // CLIMATE ENDPIONT
+    // My information ENDPIONT
     @GET("3acae5a5-31f1-45bb-9c89-ef602ce19d35")
     suspend fun getClimateData(
         // @Header("Fiware-Service") fiwareService: String="sensor",
@@ -28,5 +29,12 @@ interface NodeApi {
         // @Body(objeto) - envia al endpoint el objeto directamente - lo convierte a json
 
     ): ClimateData
+
+    //GET IRRIGATIONS LIST ENDPOINT
+    @GET("8e208460-026c-4c66-aeda-702497467417")
+    suspend fun getIrrigationList() : List<IrrigationData>
+
+
+
 
 }
