@@ -34,5 +34,14 @@
         android:id="@+id/userListFragment2"
         android:name="com.example.reegoandroid.fragments.UserListFragment"
         android:label="fragment_user_list"
-        tools:layout="@layout/fragment_user_list" />
+        tools:layout="@layout/fragment_user_list" >
+        <action
+            android:id="@+id/action_userListFragment2_to_singleUserFragment2"
+            app:destination="@id/singleUserFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleUserFragment2"
+        android:name="com.example.reegoandroid.fragments.SingleUserFragment"
+        android:label="fragment_single_user"
+        tools:layout="@layout/fragment_single_user" />
 </navigation>
