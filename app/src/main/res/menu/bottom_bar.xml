@@ -2,18 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/irrigationListFragment"
-        android:icon="@drawable/ic_launcher_background"
         android:title="Riegos" />
 
     <item
         android:id="@+id/sensorFragment"
-        android:icon="@drawable/ic_launcher_foreground"
+
         android:title="Sensores"
         />
 
     <item
         android:id="@+id/myInformationFragment"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="Info"
+        android:title="Clima"
         />
 </menu>
