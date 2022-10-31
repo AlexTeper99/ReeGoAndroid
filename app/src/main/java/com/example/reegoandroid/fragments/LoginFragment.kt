@@ -56,13 +56,14 @@ class LoginFragment : Fragment() {
 
         btnLogin.setOnClickListener{
 
-            v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
+            if(usernameInput != null && passwordInput != null) {
+                v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
+                loginViewModel.login()
+                txtLoginTitulo.text = loginViewModel.tituloLogin
+                println(usernameInput) // como envio esto al viewmodel?
+                println(passwordInput)
+            }
 
-
-            loginViewModel.login()
-            txtLoginTitulo.text = loginViewModel.tituloLogin
-            println(usernameInput) // como envio esto al viewmodel?
-            println(passwordInput)
         }
 
 
