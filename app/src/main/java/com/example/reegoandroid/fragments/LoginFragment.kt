@@ -65,13 +65,14 @@ class LoginFragment : Fragment() {
             println(passwordInput)
         }
 
-        /*
+
+
         btnHelp.setOnClickListener{
             val navigateLoginToHelp = LoginFragmentDirections.actionLoginFragmentToHelpFragment()
 
             v.findNavController().navigate(navigateLoginToHelp)
         }
-*/
+
 
     }
 
