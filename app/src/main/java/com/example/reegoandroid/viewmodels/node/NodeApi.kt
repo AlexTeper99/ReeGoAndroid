@@ -1,6 +1,5 @@
 package com.example.reegoandroid.viewmodels.node
 
-import androidx.lifecycle.MutableLiveData
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -9,7 +8,7 @@ import retrofit2.http.Header
 
 interface NodeApi {
 
-    // Using MOCK API
+    // Using Local Host
     companion object {
         val instance: NodeApi? = Retrofit
             .Builder()
@@ -32,7 +31,7 @@ interface NodeApi {
     ): ClimateData
 
     //GET IRRIGATIONS LIST ENDPOINT
-    @GET("8e208460-026c-4c66-aeda-702497467417")
+    @GET("irrigations/1")
     suspend fun getIrrigationList() : List<IrrigationData>
 
 
