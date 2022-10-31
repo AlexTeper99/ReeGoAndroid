@@ -21,11 +21,11 @@ interface NodeApi {
     }
 
     // CLIMATE ENDPIONT
-    @GET("3acae5a5-31f1-45bb-9c89-ef602ce19d35")
+    @GET("weatherInfo/buenosaires")
     suspend fun getClimateData(
         // @Header("Fiware-Service") fiwareService: String="sensor",
         // @Header("Fiware-ServicePath") fiwareServicePath: String="/",
-        @Header("Accept") fiwareServicePath: String= "application/json",
+//        @Header("Accept") fiwareServicePath: String= "application/json",
         // @Body(objeto) - envia al endpoint el objeto directamente - lo convierte a json
 
     ): ClimateData
