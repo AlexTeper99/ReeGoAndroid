@@ -21,10 +21,18 @@
         <action
             android:id="@+id/action_loginFragment_to_helpFragment"
             app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_userListFragment2"
+            app:destination="@id/userListFragment2" />
     </fragment>
     <fragment
         android:id="@+id/helpFragment"
         android:name="com.example.reegoandroid.fragments.HelpFragment"
         android:label="fragment_help"
         tools:layout="@layout/fragment_help" />
+    <fragment
+        android:id="@+id/userListFragment2"
+        android:name="com.example.reegoandroid.fragments.UserListFragment"
+        android:label="fragment_user_list"
+        tools:layout="@layout/fragment_user_list" />
 </navigation>

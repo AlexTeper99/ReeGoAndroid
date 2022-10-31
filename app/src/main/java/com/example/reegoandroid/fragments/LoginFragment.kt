@@ -57,7 +57,8 @@ class LoginFragment : Fragment() {
 
         btnLogin.setOnClickListener{
 
-            v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
+            val navigateToMainActivity = v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
+            //  v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
 
 
             loginViewModel.login()
@@ -76,7 +77,7 @@ class LoginFragment : Fragment() {
 
         // Admin Screen / Should call after login with admin user
         btnAdmin.setOnClickListener{
-            val navigateLoginToAdmin = LoginFragmentDirections.actionLoginFragmentToUserListFragment()
+            val navigateLoginToAdmin = LoginFragmentDirections.actionLoginFragmentToUserListFragment2()
             v.findNavController().navigate(navigateLoginToAdmin)
         }
 
