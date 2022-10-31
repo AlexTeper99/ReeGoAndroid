@@ -46,23 +46,23 @@ class MyInformationFragment : Fragment() {
         myInformationViewModel.getClimateData()
 
         var atmCondition = Observer<String> { atmospheric_condition ->
-            atmCondition.text = "Condiciones Atmosfericas: $atmospheric_condition"
+            atmCondition.text = "Atmósfera: $atmospheric_condition"
         }
 
         var humidity = Observer<String> { humidity ->
-            humidityView.text = "Humedad: $humidity"
+            humidityView.text = "Humedad: $humidity %"
         }
 
         var location = Observer<String> { location ->
-            locationView.text = "Ubicacion: $location"
-        }
-
-        var rainDesc = Observer<String> { raind_desc ->
-            rainDescView.text = "Descripcion de la lluvia: $raind_desc"
+            locationView.text = "Ubicacioón: $location"
         }
 
         var raining = Observer<String> { raining ->
             rainingView.text = "Esta lloviendo: $raining"
+        }
+
+        var rainDesc = Observer<String> { raind_desc ->
+            rainDescView.text = "Precipitaciones: $raind_desc"
         }
 
         var time = Observer<String> { time ->
@@ -70,7 +70,7 @@ class MyInformationFragment : Fragment() {
         }
 
         var temperature = Observer<String> { temperature ->
-            temperatureView.text = "Temperatura: $temperature"
+            temperatureView.text = "Temperatura: $temperature C."
         }  
 
 

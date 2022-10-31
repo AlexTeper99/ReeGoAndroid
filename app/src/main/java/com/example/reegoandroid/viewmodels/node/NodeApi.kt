@@ -13,19 +13,20 @@ interface NodeApi {
     companion object {
         val instance: NodeApi? = Retrofit
             .Builder()
-            .baseUrl("https://mocki.io/v1/")
+            .baseUrl("http://192.168.0.39/")
+        //.baseUrl("https://mocki.io/v1/")
             .addConverterFactory(MoshiConverterFactory.create())
             .client(OkHttpClient.Builder().build())
             .build()
             .create(NodeApi::class.java)
     }
 
-    // My information ENDPIONT
-    @GET("3acae5a5-31f1-45bb-9c89-ef602ce19d35")
+    // CLIMATE ENDPIONT
+    @GET("weatherInfo/buenosaires")
     suspend fun getClimateData(
         // @Header("Fiware-Service") fiwareService: String="sensor",
         // @Header("Fiware-ServicePath") fiwareServicePath: String="/",
-        @Header("Accept") fiwareServicePath: String= "application/json",
+//        @Header("Accept") fiwareServicePath: String= "application/json",
         // @Body(objeto) - envia al endpoint el objeto directamente - lo convierte a json
 
     ): ClimateData
@@ -37,4 +38,9 @@ interface NodeApi {
 
 
 
+    // User List Endpoint
+    @GET("users")
+    suspend fun getUserList(
+        @Header("Accept") fiwareServicePath: String= "application/json",
+    ): MutableList<UserData>
 }

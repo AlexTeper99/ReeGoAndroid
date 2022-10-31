@@ -14,7 +14,10 @@
         android:layout_marginStart="173dp"
         android:layout_marginTop="104dp"
         android:layout_marginEnd="181dp"
-        android:text="PantallaLogin"
+        android:layout_marginBottom="643dp"
+        android:text="Login"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +36,11 @@
         app:layout_constraintEnd_toStartOf="@+id/btnHelp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLoginTitle"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+
+        />
 
     <Button
         android:id="@+id/btnHelp"
@@ -48,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnLogin"
         app:layout_constraintTop_toBottomOf="@+id/txtLoginTitle"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/usernameInput"
@@ -84,4 +91,16 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameInput" />
+
+
+    <Button
+        android:id="@+id/adminBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Panel Admin"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.556" />
 </androidx.constraintlayout.widget.ConstraintLayout>
