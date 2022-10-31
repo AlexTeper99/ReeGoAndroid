@@ -33,7 +33,9 @@
         android:id="@+id/singleIrrigationFragment"
         android:name="com.example.reegoandroid.fragments.SingleIrrigationFragment"
         android:label="fragment_single_irrigation"
-        tools:layout="@layout/fragment_single_irrigation" />
+        tools:layout="@layout/fragment_single_irrigation" >
+        <argument android:name="irrigation" />
+    </fragment>
     <fragment
         android:id="@+id/singleNoteFragment"
         android:name="com.example.reegoandroid.fragments.SingleNoteFragment"

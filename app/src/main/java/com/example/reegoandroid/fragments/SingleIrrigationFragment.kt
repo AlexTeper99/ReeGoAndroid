@@ -15,8 +15,8 @@ import com.example.reegoandroid.viewmodels.SingleIrrigationViewModel
 class SingleIrrigationFragment : Fragment() {
     lateinit var v: View
     private lateinit var txtTitle : TextView
-
-
+    private lateinit var txtIrrigationId : TextView
+    private lateinit var txtIrrigationIdValue : TextView
     private val singleIrrigationViewModel : SingleIrrigationViewModel by viewModels()
 
     override fun onCreateView(
@@ -26,13 +26,16 @@ class SingleIrrigationFragment : Fragment() {
         v =  inflater.inflate(R.layout.fragment_single_irrigation, container, false)
 
         txtTitle = v.findViewById(R.id.txtSingleIrrigationTitle)
+        txtIrrigationId = v.findViewById(R.id.txtIrrigationId)
+        txtIrrigationIdValue = v.findViewById(R.id.txtIrrigationIdValue)
         return v
     }
 
     override fun onStart() {
         super.onStart()
 
-        txtTitle.text = "Info del Riegoo"
+        txtTitle.text = "Info del riego"
+        txtIrrigationIdValue.text = SingleIrrigationFragmentArgs.fromBundle(requireArguments()).irrigation
     }
 
 }

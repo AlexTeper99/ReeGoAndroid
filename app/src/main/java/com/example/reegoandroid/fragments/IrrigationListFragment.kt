@@ -65,7 +65,7 @@ class IrrigationListFragment : Fragment() {
 
            // userAdapter = UserAdapter(userList.toMutableList())
             irrigationAdapter = IrrigationAdapter(irrigationList.toMutableList()) { pos ->
-                val action = IrrigationListFragmentDirections.actionIrrigationListFragmentToSingleIrrigationFragment2()
+                val action = IrrigationListFragmentDirections.actionIrrigationListFragmentToSingleIrrigationFragment2(irrigationList[pos].id.toString())
                 v.findNavController().navigate(action)
             }
             irrigationAdapter.notifyDataSetChanged()
