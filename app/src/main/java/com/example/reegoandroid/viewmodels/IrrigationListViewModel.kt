@@ -16,7 +16,7 @@ class IrrigationListViewModel( private val nodeRepository: NodeRepository = Node
     }
 
     //Declaro las propiedades
-     var irrigationList: MutableList<IrrigationData> = mutableListOf()
+    var irrigationList: MutableList<IrrigationData> = mutableListOf()
 
     val irrigationListLive: MutableLiveData<List<IrrigationData>> by lazy {
         MutableLiveData<List<IrrigationData>>()

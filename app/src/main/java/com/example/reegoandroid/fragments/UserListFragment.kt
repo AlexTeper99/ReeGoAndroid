@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.reegoandroid.R
@@ -43,7 +44,11 @@ class UserListFragment : Fragment() {
 
         userListViewModel.userListLive.observe(viewLifecycleOwner) { userList ->
             
-            userAdapter = UserAdapter(userList.toMutableList())
+            userAdapter = UserAdapter(userList.toMutableList()){ pos: Int ->
+                val action = UserListFragmentDirections.actionUserListFragment2ToSingleUserFragment2(userList[pos].id.toString())
+                v.findNavController().navigate(action)
+            }
+
             userAdapter.notifyDataSetChanged()
 
             userRecyclerView.apply {

@@ -11,16 +11,6 @@
         android:label="fragment_backoffice"
         tools:layout="@layout/fragment_backoffice" />
     <fragment
-        android:id="@+id/userListFragment"
-        android:name="com.example.reegoandroid.fragments.UserListFragment"
-        android:label="fragment_user_list"
-        tools:layout="@layout/fragment_user_list" />
-    <fragment
-        android:id="@+id/singleUserFragment"
-        android:name="com.example.reegoandroid.fragments.SingleUserFragment"
-        android:label="fragment_single_user"
-        tools:layout="@layout/fragment_single_user" />
-    <fragment
         android:id="@+id/irrigationListFragment"
         android:name="com.example.reegoandroid.fragments.IrrigationListFragment"
         android:label="fragment_irrigation_list"
@@ -35,12 +25,22 @@
         android:label="fragment_single_irrigation"
         tools:layout="@layout/fragment_single_irrigation" >
         <argument android:name="irrigation" />
+        <action
+            android:id="@+id/action_singleIrrigationFragment_to_singleNoteFragment"
+            app:destination="@id/singleNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/singleNoteFragment"
         android:name="com.example.reegoandroid.fragments.SingleNoteFragment"
         android:label="fragment_single_note"
-        tools:layout="@layout/fragment_single_note" />
+        tools:layout="@layout/fragment_single_note" >
+        <argument
+            android:name="noteText"
+            app:argType="string" />
+        <argument
+            android:name="noteId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/sensorFragment"
         android:name="com.example.reegoandroid.fragments.SensorFragment"
