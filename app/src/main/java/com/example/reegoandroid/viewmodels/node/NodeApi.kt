@@ -5,6 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Path
 
 interface NodeApi {
 
@@ -30,12 +31,16 @@ interface NodeApi {
 
     ): ClimateData
 
-    //GET IRRIGATIONS LIST ENDPOINT
+    // Get Irrigation List
     @GET("irrigations/1")
     suspend fun getIrrigationList() : List<IrrigationData>
 
-
-
+    // Get Comment List of a give Irrigation id
+    @GET("irrigation/{id}/comments")
+    //@GET("irrigation/1/comments")
+    suspend fun getIrrigationComments(
+        @Path("id") id: Int,
+    ) : List<NoteData>
 
     // User List Endpoint
     @GET("users")

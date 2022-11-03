@@ -25,12 +25,22 @@
         android:label="fragment_single_irrigation"
         tools:layout="@layout/fragment_single_irrigation" >
         <argument android:name="irrigation" />
+        <action
+            android:id="@+id/action_singleIrrigationFragment_to_singleNoteFragment"
+            app:destination="@id/singleNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/singleNoteFragment"
         android:name="com.example.reegoandroid.fragments.SingleNoteFragment"
         android:label="fragment_single_note"
-        tools:layout="@layout/fragment_single_note" />
+        tools:layout="@layout/fragment_single_note" >
+        <argument
+            android:name="noteText"
+            app:argType="string" />
+        <argument
+            android:name="noteId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/sensorFragment"
         android:name="com.example.reegoandroid.fragments.SensorFragment"

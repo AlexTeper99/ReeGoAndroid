@@ -25,14 +25,25 @@ class NodeRepository(private val api: NodeApi) {
             } catch (e: Exception) {
                 Result.failure(e)
         }
-    } 
+    }
 
-    
     suspend fun getAllusers(): Result<MutableList<UserData>>
     {
         return try {
 
             val response = api.getUserList()
+            Result.success(response)
+
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getIrrigationComments(irrId: Int): Result<List<NoteData>>
+    {
+        return try {
+
+            val response = api.getIrrigationComments(irrId)
             Result.success(response)
 
         } catch (e: Exception) {
