@@ -53,6 +53,10 @@ class IrrigationListFragment : Fragment() {
             }
 
         }
+
+        // TODO + Comentario onClick() redirect to
+        // single note fragment
+
     }
 
 }

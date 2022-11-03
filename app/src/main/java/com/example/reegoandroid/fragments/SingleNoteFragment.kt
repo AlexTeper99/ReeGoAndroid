@@ -13,7 +13,7 @@ import com.example.reegoandroid.viewmodels.SingleNoteViewModel
 class SingleNoteFragment : Fragment() {
     lateinit var v: View
     // private lateinit var txtTitle : TextView
-    private lateinit var txtNote : TextView
+    private lateinit var txtNoteEditable : TextView
 
 
     private val singleNoteViewModel : SingleNoteViewModel by viewModels()
@@ -24,7 +24,7 @@ class SingleNoteFragment : Fragment() {
         v = inflater.inflate(R.layout.fragment_single_note, container, false)
 
         // txtTitle = v.findViewById(R.id.txtSingleNoteTitle)
-        txtNote  = v.findViewById(R.id.txtSingleComment)
+        txtNoteEditable = v.findViewById(R.id.singleCommentEditText)
 
         return v
     }
@@ -33,10 +33,16 @@ class SingleNoteFragment : Fragment() {
         super.onStart()
 
         val riegoId = SingleNoteFragmentArgs.fromBundle(requireArguments()).noteId.toString()
-        val myText = SingleNoteFragmentArgs.fromBundle(requireArguments()).noteText
+        val noteText = SingleNoteFragmentArgs.fromBundle(requireArguments()).noteText
 
-        txtNote.text = myText
-        // txtTitle.text = "Nota del riego $riegoId"
+        txtNoteEditable.text = noteText
+
+        // TODO
+
+        // deleteButton on click delete(riegoId)
+
+        // editButton on clicl update(riegoId, , txtNoteEditable.text)
+
     }
 
 
