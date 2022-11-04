@@ -16,28 +16,26 @@ import com.example.reegoandroid.viewmodels.IrrigationListViewModel
 class IrrigationListFragment : Fragment() {
     lateinit var v: View
 
-    private val irrigationListViewModel : IrrigationListViewModel by viewModels()
-
-    // 4. inicializar el adapter
     lateinit var irrigationAdapter: IrrigationAdapter
     lateinit var irrigationRecyclerView: RecyclerView
+
+
+    private val irrigationListViewModel : IrrigationListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         v =  inflater.inflate(R.layout.fragment_irrigation_list, container, false)
 
         irrigationRecyclerView = v.findViewById(R.id.recIrrigation)
-
-
         return v
     }
 
     override fun onStart() {
         super.onStart()
 
-        irrigationListViewModel.getIrrigationList();
+        irrigationListViewModel.getIrrigationList()
 
         irrigationListViewModel.irrigationListLive.observe(viewLifecycleOwner) { irrigationList ->
 
@@ -54,8 +52,10 @@ class IrrigationListFragment : Fragment() {
 
         }
 
+
+
+
         // TODO + Comentario onClick() redirect to
-        // new comentario
         // single note fragment
 
     }

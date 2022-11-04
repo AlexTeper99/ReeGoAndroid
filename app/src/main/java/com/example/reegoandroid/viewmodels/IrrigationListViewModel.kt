@@ -49,4 +49,19 @@ class IrrigationListViewModel( private val nodeRepository: NodeRepository = Node
             }
         }
     }
+
+//    internal fun createComment(irrigationId: Int, commentText: String) {
+//        val scope = CoroutineScope(Dispatchers.Default)
+//        scope.launch {
+//
+//            val result = nodeRepository.createComment(commentText, irrigationId);
+//
+//            result.onSuccess {
+//                println("Comentario Creado" )
+//            }.onFailure {
+//                println("Error en a llamada al api - Create Comment")
+//            }
+//
+//        }
+//    }
 }

@@ -51,9 +51,30 @@ class NodeRepository(private val api: NodeApi) {
         }
     }
 
+    // Comments
+    suspend fun createComment(commentText : String, irrigationId: Int): Result<String> {
+        return try {
+            val response = api.createComment(commentText, irrigationId)
+            Result.success(response)
+
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
     suspend fun updateComment(commentId: Int, commentText : String): Result<String> {
         return try {
             val response = api.updateComment(commentId,commentText)
+            Result.success(response)
+
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun deleteComment(commentId: Int): Result<String> {
+        return try {
+            val response = api.deleteComment(commentId)
             Result.success(response)
 
         } catch (e: Exception) {

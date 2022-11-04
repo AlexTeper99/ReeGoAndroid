@@ -12,23 +12,21 @@ class SingleNoteViewModel (private val nodeRepository: NodeRepository = NodeRepo
 
     }
 
-    // TODO Delete comment by id
+    internal fun deleteComment(commentId: Int) {
+        val scope = CoroutineScope(Dispatchers.Default)
+        scope.launch {
 
-//    internal fun deleteComment(commentId: Int) {
-//        val scope = CoroutineScope(Dispatchers.Default)
-//        scope.launch {
-//
-//
-//            val result = nodeRepository.deleteComment(commentId);
-//
-//            result.onSuccess {
-//                println("Comentario Borrado $commentId" )
-//            }.onFailure {
-//                println("Error en a llamada al api / delete comment")
-//            }
-//
-//        }
-//    }
+
+            val result = nodeRepository.deleteComment(commentId);
+
+            result.onSuccess {
+                println("Comentario Borrado $commentId" )
+            }.onFailure {
+                println("Error en a llamada al api | Delete comment")
+            }
+
+        }
+    }
 
     internal fun updateComment(commentId: Int, commentText: String) {
         val scope = CoroutineScope(Dispatchers.Default)
@@ -40,6 +38,22 @@ class SingleNoteViewModel (private val nodeRepository: NodeRepository = NodeRepo
                 println("Comentario Actualizado $commentId" )
             }.onFailure {
                 println("Error en a llamada al api - Update Comment")
+            }
+
+        }
+    }
+
+    // singleNoteViewModel.createComment(newText,irrigationId)
+    internal fun createComment(commentText: String, irrigationId: Int) {
+        val scope = CoroutineScope(Dispatchers.Default)
+        scope.launch {
+
+            val result = nodeRepository.createComment(commentText, irrigationId);
+
+            result.onSuccess {
+                println("Comentario Creado" )
+            }.onFailure {
+                println("Error en a llamada al api - Create Comment")
             }
 
         }

@@ -52,4 +52,18 @@ interface NodeApi {
         @Path("id") commentId: Int,
         @Query("comment") commentText: String,
     ) : String
+
+    // Update Comment
+    @DELETE("comment/{id}")
+    suspend fun deleteComment(
+        @Path("id") commentId: Int,
+    ) : String
+
+    // Update Comment
+    @POST("comment")
+    suspend fun createComment(
+        @Query("text") commentText: String,
+        @Query("idIrrigation") irrigationId: Int,
+    ) : String
+
 }
