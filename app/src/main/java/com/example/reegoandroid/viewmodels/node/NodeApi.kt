@@ -3,9 +3,7 @@ package com.example.reegoandroid.viewmodels.node
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface NodeApi {
 
@@ -47,4 +45,11 @@ interface NodeApi {
     suspend fun getUserList(
         @Header("Accept") fiwareServicePath: String= "application/json",
     ): MutableList<UserData>
+
+    // Update Comment
+    @PUT("comment/{id}")
+    suspend fun updateComment(
+        @Path("id") commentId: Int,
+        @Query("comment") commentText: String,
+    ) : String
 }

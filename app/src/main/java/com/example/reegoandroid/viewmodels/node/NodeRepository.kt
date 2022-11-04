@@ -51,4 +51,16 @@ class NodeRepository(private val api: NodeApi) {
         }
     }
 
+    suspend fun updateComment(commentId: Int, commentText : String): Result<String> {
+        return try {
+            val response = api.updateComment(commentId,commentText)
+            Result.success(response)
+
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+
+
 }
