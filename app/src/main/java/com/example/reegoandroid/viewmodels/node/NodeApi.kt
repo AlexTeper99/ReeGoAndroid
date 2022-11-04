@@ -13,7 +13,7 @@ interface NodeApi {
     companion object {
         val instance: NodeApi? = Retrofit
             .Builder()
-            .baseUrl("http://192.168.0.39/")
+            .baseUrl("http://192.168.0.160/")
         //.baseUrl("https://mocki.io/v1/")
             .addConverterFactory(MoshiConverterFactory.create())
             .client(OkHttpClient.Builder().build())

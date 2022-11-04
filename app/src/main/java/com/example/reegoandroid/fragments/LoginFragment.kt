@@ -1,12 +1,16 @@
 package com.example.reegoandroid.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.content.ContentProviderCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -54,17 +58,16 @@ class LoginFragment : Fragment() {
 
         txtLoginTitulo.text = loginViewModel.tituloLogin
 
-
         btnLogin.setOnClickListener{
 
             val navigateToMainActivity = v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
             //  v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
 
-
-            loginViewModel.login()
             txtLoginTitulo.text = loginViewModel.tituloLogin
             println(usernameInput) // como envio esto al viewmodel?
             println(passwordInput)
+
+
         }
 
 
@@ -82,6 +85,32 @@ class LoginFragment : Fragment() {
         }
 
 
+
+
+    }
+
+    fun login(){
+        //MANEJO SHARED PREFERENCES
+        val sharedPref : SharedPreferences = requireContext().getSharedPreferences("Credenciales", Context.MODE_PRIVATE)
+
+        val editor = sharedPref.edit()
+
+        editor.putString("UserId", "1")
+        editor.putString("UserPlot", "1")
+        editor.putString("isAdmin", "1")
+        editor.apply()
+
+        var user = sharedPref.getString("UserId", "0")!!
+        Log.d("-----UserId----------------", user)
+
+        editor.putString("UserId", "0")
+        editor.apply()
+        user = sharedPref.getString("UserId", "0")!!
+        Log.d("-----UserId ACTUALIZADO----------------", user)
+
+        if(true){
+            btnAdmin.visibility = View.INVISIBLE //
+        }
     }
 
 

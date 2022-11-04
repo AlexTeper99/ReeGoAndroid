@@ -13,13 +13,12 @@ interface FiwareApi {
     companion object {
         val instance: FiwareApi? = Retrofit
             .Builder()
-            .baseUrl("http://192.168.0.39/")
+            .baseUrl("http://192.168.0.160/")
             .addConverterFactory(MoshiConverterFactory.create())
             .client(OkHttpClient.Builder().build())
             .build()
             .create(FiwareApi::class.java)
     }
-
 
     // example post some data via SensorRequestBody
 //    @POST("iot")
@@ -30,7 +29,6 @@ interface FiwareApi {
 //                                           "sensor",
 //                                           "/")
 //        ): SensorData
-
 
 
     @GET("iot")
