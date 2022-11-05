@@ -66,4 +66,29 @@ interface NodeApi {
         @Query("idIrrigation") irrigationId: Int,
     ) : String
 
+    @POST("user")
+    suspend fun createUser(
+        @Query("name") userName: String,
+        @Query("email") userEmail: String,
+        @Query("password") userPass: String,
+        @Query("plotId") userPlotId: Int,
+        @Query("isAdmin") userIsadmin: Boolean,
+    ) : String
+
+    @PUT("user")
+    suspend fun updateUser(
+        @Query("userId") userId: Int,
+        @Query("name") userName: String,
+        @Query("email") userEmail: String,
+        @Query("password") userPass: String,
+        @Query("plotId") userPlotId: Int,
+        @Query("isAdmin") userIsadmin: Boolean,
+    ) : String
+
+    // Update Comment
+    @DELETE("user/{id}")
+    suspend fun deleteUser(
+        @Path("id") userId: Int,
+    ) : String
+
 }

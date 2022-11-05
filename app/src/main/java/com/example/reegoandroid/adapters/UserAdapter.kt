@@ -19,12 +19,13 @@ class UserAdapter(var userList: MutableList<UserData>,  var onClick : (Int) -> U
             this.view = v
         }
 
-        fun setUser(name: String, email: String){
+        fun setUser(user: UserData){
+
             var userNameView : TextView = view.findViewById(R.id.txtUserName)
-            userNameView.text = name
+            userNameView.text = user.name
 
             var userEmailView : TextView = view.findViewById(R.id.txtUserEmail)
-            userEmailView.text = email
+            userEmailView.text = user.email
         }
 
         fun getCard() : CardView {
@@ -42,8 +43,7 @@ class UserAdapter(var userList: MutableList<UserData>,  var onClick : (Int) -> U
     override fun onBindViewHolder(holder: UserHolder, i: Int) {
 
         holder.setUser(
-            userList[i].name,
-            userList[i].email,
+            userList[i]
         )
 
         holder.getCard().setOnClickListener{

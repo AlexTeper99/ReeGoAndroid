@@ -82,6 +82,64 @@ class NodeRepository(private val api: NodeApi) {
         }
     }
 
+    // Users *************
+
+    // Create User
+    suspend fun createUser(
+        userName:String,
+        userEmail:String,
+        userPass:String,
+        userPlotId:Int,
+        userIsAdmin:Boolean
+    ): Result<String> {
+        return try {
+            val response = api.createUser(
+                userName,
+                userEmail,
+                userPass,
+                userPlotId,
+                userIsAdmin
+            )
+            Result.success(response)
+
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun updateUser(
+        userId:Int,
+        userName:String,
+        userEmail:String,
+        userPass:String,
+        userPlotId:Int,
+        userIsAdmin:Boolean
+    ): Result<String> {
+        return try {
+            val response = api.updateUser(
+                userId,
+                userName,
+                userEmail,
+                userPass,
+                userPlotId,
+                userIsAdmin
+            )
+            Result.success(response)
+
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun deleteUser(userId:Int): Result<String> {
+        return try {
+            val response = api.deleteUser(userId)
+            Result.success(response)
+
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 
 
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -21,6 +22,8 @@ class UserListFragment : Fragment() {
     lateinit var userRecyclerView: RecyclerView
     lateinit var userAdapter: UserAdapter
 
+    lateinit var btnAddUser: Button
+
     private val userListViewModel : UserListViewModel by viewModels()
 
     override fun onCreateView(
@@ -33,6 +36,7 @@ class UserListFragment : Fragment() {
 
         txtTitle = v.findViewById(R.id.txtUsersTitle)
         txtTitle.text = "Usuarios"
+        btnAddUser = v.findViewById(R.id.addUserBtn)
 
         return v
     }
@@ -44,8 +48,16 @@ class UserListFragment : Fragment() {
 
         userListViewModel.userListLive.observe(viewLifecycleOwner) { userList ->
             
-            userAdapter = UserAdapter(userList.toMutableList()){ pos: Int ->
-                val action = UserListFragmentDirections.actionUserListFragment2ToSingleUserFragment2(userList[pos].id.toString())
+            userAdapter = UserAdapter(userList.toMutableList()) { pos: Int ->
+                val action = UserListFragmentDirections.actionUserListFragment2ToSingleUserFragment2(
+
+                    userList[pos].id,
+                    userList[pos].email,
+                    userList[pos].password,
+                    userList[pos].idPlot,
+                    userList[pos].name,
+                    userList[pos].isAdmin
+                )
                 v.findNavController().navigate(action)
             }
 
@@ -56,6 +68,23 @@ class UserListFragment : Fragment() {
                 adapter = userAdapter
             }
 
+        }
+
+        // Create a user / redirect to create user
+        btnAddUser.setOnClickListener {
+            println("add a user pressed")
+
+             val action =
+                UserListFragmentDirections.actionUserListFragment2ToSingleUserFragment2(
+                    0,
+                    "",
+                    "",
+                    0,
+                    "",
+                    false
+                )
+
+            v.findNavController().navigate(action)
         }
 
     }
