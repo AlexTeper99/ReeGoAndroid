@@ -34,7 +34,7 @@ interface NodeApi {
     suspend fun getIrrigationList() : List<IrrigationData>
 
     // Get Comment List of a give Irrigation id
-    @GET("irrigation/{id}/comments")
+    @GET("comments/{id}")
     //@GET("irrigation/1/comments")
     suspend fun getIrrigationComments(
         @Path("id") id: Int,
