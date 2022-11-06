@@ -53,13 +53,13 @@ interface NodeApi {
         @Query("comment") commentText: String,
     ) : String
 
-    // Update Comment
+    // delete Comment
     @DELETE("comment/{id}")
     suspend fun deleteComment(
         @Path("id") commentId: Int,
     ) : String
 
-    // Update Comment
+    // create Comment
     @POST("comment")
     suspend fun createComment(
         @Query("text") commentText: String,
