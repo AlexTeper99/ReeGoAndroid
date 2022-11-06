@@ -40,6 +40,13 @@
         <argument
             android:name="noteId"
             app:argType="integer" />
+        <argument
+            android:name="isEdit"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        <argument
+            android:name="irrigationId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/sensorFragment"

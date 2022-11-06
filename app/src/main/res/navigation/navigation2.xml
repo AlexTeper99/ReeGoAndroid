@@ -44,6 +44,20 @@
         android:name="com.example.reegoandroid.fragments.SingleUserFragment"
         android:label="fragment_single_user"
         tools:layout="@layout/fragment_single_user" >
-        <argument android:name="userId" />
+        <argument android:name="userId"
+            app:argType="integer" />
+        <argument android:name="userEmail"
+            app:argType="string" />
+        <argument android:name="userPassword"
+            app:argType="string" />
+        <argument
+            android:name="userPlotId"
+            app:argType="integer" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <argument
+            android:name="userIsAdmin"
+            app:argType="boolean" />
     </fragment>
 </navigation>

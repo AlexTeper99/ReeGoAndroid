@@ -3,9 +3,7 @@ package com.example.reegoandroid.viewmodels.node
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface NodeApi {
 
@@ -36,7 +34,7 @@ interface NodeApi {
     suspend fun getIrrigationList() : List<IrrigationData>
 
     // Get Comment List of a give Irrigation id
-    @GET("irrigation/{id}/comments")
+    @GET("comments/{id}")
     //@GET("irrigation/1/comments")
     suspend fun getIrrigationComments(
         @Path("id") id: Int,
@@ -47,4 +45,50 @@ interface NodeApi {
     suspend fun getUserList(
         @Header("Accept") fiwareServicePath: String= "application/json",
     ): MutableList<UserData>
+
+    // Update Comment
+    @PUT("comment/{id}")
+    suspend fun updateComment(
+        @Path("id") commentId: Int,
+        @Query("comment") commentText: String,
+    ) : String
+
+    // delete Comment
+    @DELETE("comment/{id}")
+    suspend fun deleteComment(
+        @Path("id") commentId: Int,
+    ) : String
+
+    // create Comment
+    @POST("comment")
+    suspend fun createComment(
+        @Query("text") commentText: String,
+        @Query("idIrrigation") irrigationId: Int,
+    ) : String
+
+    @POST("user")
+    suspend fun createUser(
+        @Query("name") userName: String,
+        @Query("email") userEmail: String,
+        @Query("password") userPass: String,
+        @Query("plotId") userPlotId: Int,
+        @Query("isAdmin") userIsadmin: Boolean,
+    ) : String
+
+    @PUT("user")
+    suspend fun updateUser(
+        @Query("userId") userId: Int,
+        @Query("name") userName: String,
+        @Query("email") userEmail: String,
+        @Query("password") userPass: String,
+        @Query("plotId") userPlotId: Int,
+        @Query("isAdmin") userIsadmin: Boolean,
+    ) : String
+
+    // Update Comment
+    @DELETE("user/{id}")
+    suspend fun deleteUser(
+        @Path("id") userId: Int,
+    ) : String
+
 }
