@@ -27,6 +27,7 @@ class LoginFragment : Fragment() {
     //declaro vista
     lateinit var v: View
 
+    private var resultSaveSP : Boolean = false
     private lateinit var txtLoginTitulo : TextView
     private lateinit var btnLogin: Button
     private lateinit var btnHelp: Button
@@ -69,7 +70,7 @@ class LoginFragment : Fragment() {
           //  val loginInfo = loginViewModel.login(usernameInput.text.toString(), passwordInput.text.toString())
             txtLoginTitulo.text = loginViewModel.tituloLogin
 
-            val scope = CoroutineScope(Dispatchers.Default)
+            val scope = CoroutineScope(Dispatchers.Main)
             var loginInfo: LoginData
             scope.launch {
 
@@ -84,8 +85,14 @@ class LoginFragment : Fragment() {
                     Log.d("city", loginInfo.city)
                     Log.d("isAdmin", loginInfo.isAdmin.toString())
 
-                    saveSharedPreferences(loginInfo.idUser.toString(), loginInfo.idPlot.toString(),  loginInfo.city,  loginInfo.isAdmin.toString() )
+                    resultSaveSP  = saveSharedPreferences(loginInfo.idUser.toString(), loginInfo.idPlot.toString(),  loginInfo.city,  loginInfo.isAdmin.toString() )
 
+
+                    if(resultSaveSP){
+                     v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
+                    }else{
+                        println("No podes navegar burro")
+                    }
 
 
                 }.onFailure {
@@ -126,7 +133,7 @@ class LoginFragment : Fragment() {
         idPlot: String,
         city: String,
         isAdmin: String
-    ) {
+    ): Boolean {
         val sharedPref : SharedPreferences = requireContext().getSharedPreferences("Credenciales", Context.MODE_PRIVATE)
 
         val editor = sharedPref.edit()
@@ -149,9 +156,10 @@ class LoginFragment : Fragment() {
 
         if(userId != "FALLA SP" && userId != "0"){
             println("LOGIN CORRECTO")
-          //  v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
+            return true;
         }else{
             println("LOGIN INCORRECTO - INGRESA LOS DATOS BIEN")
+            return false
         }
     }
 
