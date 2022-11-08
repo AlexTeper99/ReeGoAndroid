@@ -12,6 +12,6 @@
 
     <item
         android:id="@+id/myInformationFragment"
-        android:title="Clima"
+        android:title="Informacion"
         />
 </menu>
