@@ -18,6 +18,7 @@ import com.example.reegoandroid.viewmodels.LoginViewModel
 import com.example.reegoandroid.viewmodels.node.LoginData
 import com.example.reegoandroid.viewmodels.node.NodeApi
 import com.example.reegoandroid.viewmodels.node.NodeRepository
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -91,7 +92,7 @@ class LoginFragment : Fragment() {
                     if(resultSaveSP){
                      v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
                     }else{
-                        println("No podes navegar burro")
+                        Snackbar.make(v, "Ingrese un usuario o contraseña valido", Snackbar.LENGTH_SHORT).show()
                     }
 
 
