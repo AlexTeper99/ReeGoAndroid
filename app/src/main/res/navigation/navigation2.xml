@@ -68,5 +68,8 @@
         <action
             android:id="@+id/action_backofficeFragment_to_userListFragment2"
             app:destination="@id/userListFragment2" />
+        <action
+            android:id="@+id/action_backofficeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 </navigation>
