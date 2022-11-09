@@ -57,5 +57,14 @@
         android:id="@+id/myInformationFragment"
         android:name="com.example.reegoandroid.fragments.MyInformationFragment"
         android:label="fragment_my_information"
-        tools:layout="@layout/fragment_my_information" />
+        tools:layout="@layout/fragment_my_information" >
+        <action
+            android:id="@+id/action_myInformationFragment_to_mainActivity2"
+            app:destination="@id/mainActivity2" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity2"
+        android:name="com.example.reegoandroid.MainActivity2"
+        android:label="activity_main2"
+        tools:layout="@layout/activity_main2" />
 </navigation>
