@@ -19,10 +19,15 @@
         android:name="com.example.reegoandroid.fragments.SingleIrrigationFragment"
         android:label="fragment_single_irrigation"
         tools:layout="@layout/fragment_single_irrigation" >
-        <argument android:name="irrigation" />
+        <argument android:name="irrigationId"
+            app:argType="string" />
         <action
             android:id="@+id/action_singleIrrigationFragment_to_singleNoteFragment"
             app:destination="@id/singleNoteFragment" />
+        <argument android:name="date"
+            app:argType="string" />
+        <argument android:name="waterUsed"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/singleNoteFragment"

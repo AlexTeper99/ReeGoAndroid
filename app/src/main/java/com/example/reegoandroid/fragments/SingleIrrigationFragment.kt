@@ -58,7 +58,9 @@ class SingleIrrigationFragment : Fragment() {
         super.onStart()
 
         txtTitle.text = "Comentar sobre este riego"
-        txtIrrigationIdValue.text = SingleIrrigationFragmentArgs.fromBundle(requireArguments()).irrigation
+        txtIrrigationIdValue.text = SingleIrrigationFragmentArgs.fromBundle(requireArguments()).irrigationId
+        txtIrrigationDateValue.text = SingleIrrigationFragmentArgs.fromBundle(requireArguments()).date
+        txtIrrigationWaterValue.text = SingleIrrigationFragmentArgs.fromBundle(requireArguments()).waterUsed
 
         val irrigationId: Int = txtIrrigationIdValue.text.toString().toInt()
 

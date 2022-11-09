@@ -40,7 +40,12 @@ class IrrigationListFragment : Fragment() {
         irrigationListViewModel.irrigationListLive.observe(viewLifecycleOwner) { irrigationList ->
 
             irrigationAdapter = IrrigationAdapter(irrigationList.toMutableList()) { pos ->
-                val action = IrrigationListFragmentDirections.actionIrrigationListFragmentToSingleIrrigationFragment2(irrigationList[pos].id.toString())
+                val irrigation = irrigationList[pos];
+                val action = IrrigationListFragmentDirections.actionIrrigationListFragmentToSingleIrrigationFragment2(
+                    irrigation.id.toString(),
+                    irrigation.updatedAt,
+                    irrigation.waterUsed.toString()
+                )
                 v.findNavController().navigate(action)
             }
             irrigationAdapter.notifyDataSetChanged()
