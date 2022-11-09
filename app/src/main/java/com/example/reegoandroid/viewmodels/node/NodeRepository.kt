@@ -1,8 +1,5 @@
 package com.example.reegoandroid.viewmodels.node
 
-import android.util.Log
-import retrofit2.http.Query
-
 class NodeRepository(private val api: NodeApi) {
     // returns climate data
     suspend fun getClimateData(): Result<ClimateData>
@@ -150,6 +147,18 @@ class NodeRepository(private val api: NodeApi) {
     suspend fun deleteUser(userId:Int): Result<String> {
         return try {
             val response = api.deleteUser(userId)
+            Result.success(response)
+
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getBackofficeInfo(): Result<BackofficeData>
+    {
+        return try {
+
+            val response = api.getBackofficeData()
             Result.success(response)
 
         } catch (e: Exception) {

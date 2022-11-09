@@ -5,22 +5,22 @@
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.BackofficeFragment" >
+    tools:context=".fragments.BackofficeFragment">
 
     <TextView
         android:id="@+id/txtBackofficeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="177dp"
-        android:layout_marginTop="125dp"
         android:layout_marginEnd="176dp"
-        android:layout_marginBottom="587dp"
         android:text="ReeGo"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.112" />
 
     <Button
         android:id="@+id/btnUserList"
@@ -35,7 +35,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtBackofficeTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/txtBackofficeTitle"
+        app:layout_constraintVertical_bias="0.657" />
 
     <Button
         android:id="@+id/btnLogoutAdmin"
@@ -52,5 +53,78 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnUserList"
         app:rippleColor="#FF0000" />
+
+    <TextView
+        android:id="@+id/textTotalTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginBottom="335dp"
+        android:text="Registros en el sistema"
+        app:layout_constraintBottom_toTopOf="@+id/btnUserList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBackofficeTitle"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtTotalPlots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="199dp"
+        android:text="Cantidad de parcelas:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTotalTitle" />
+
+    <TextView
+        android:id="@+id/txtTotalSoja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="230dp"
+        android:text="Cultivos de Soja:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtTotalPlots"
+        app:layout_constraintTop_toBottomOf="@+id/txtTotalPlots" />
+
+    <TextView
+        android:id="@+id/txtTotalTrigo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="225dp"
+        android:layout_marginBottom="19dp"
+        android:text="Cultivos de Trigo:"
+        app:layout_constraintBottom_toTopOf="@+id/txtTotalMaiz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtTotalSoja"
+        app:layout_constraintTop_toBottomOf="@+id/txtTotalSoja" />
+
+    <TextView
+        android:id="@+id/txtTotalMaiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="232dp"
+        android:layout_marginBottom="40dp"
+        android:text="Cultivos de Maiz"
+        app:layout_constraintBottom_toBottomOf="@+id/txtTotalIrrigationsLog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtTotalTrigo" />
+
+    <TextView
+        android:id="@+id/txtTotalIrrigationsLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="124dp"
+        android:text="Total de Riegos Realizados:"
+        app:layout_constraintBottom_toTopOf="@+id/btnUserList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtTotalMaiz" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

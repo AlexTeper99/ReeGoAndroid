@@ -11,7 +11,7 @@ interface NodeApi {
     companion object {
         val instance: NodeApi? = Retrofit
             .Builder()
-            .baseUrl("http://192.168.0.160/")
+            .baseUrl("http://192.168.0.39/")
         //.baseUrl("https://mocki.io/v1/")
             .addConverterFactory(MoshiConverterFactory.create())
             .client(OkHttpClient.Builder().build())
@@ -98,5 +98,8 @@ interface NodeApi {
         @Query("email") email: String,
         @Query("password") password: String,
     ) : LoginData
+
+    @GET("stats")
+    suspend fun getBackofficeData() : BackofficeData
 
 }

@@ -13,7 +13,7 @@ interface FiwareApi {
     companion object {
         val instance: FiwareApi? = Retrofit
             .Builder()
-            .baseUrl("http://192.168.0.160/")
+            .baseUrl("http://192.168.0.39/")
             .addConverterFactory(MoshiConverterFactory.create())
             .client(OkHttpClient.Builder().build())
             .build()
