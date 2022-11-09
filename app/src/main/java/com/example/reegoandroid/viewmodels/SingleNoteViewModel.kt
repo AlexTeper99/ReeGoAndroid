@@ -23,6 +23,7 @@ class SingleNoteViewModel (private val nodeRepository: NodeRepository = NodeRepo
                 println("Comentario Borrado $commentId" )
             }.onFailure {
                 println("Error en a llamada al api | Delete comment")
+
             }
 
         }
@@ -38,6 +39,8 @@ class SingleNoteViewModel (private val nodeRepository: NodeRepository = NodeRepo
                 println("Comentario Actualizado $commentId" )
             }.onFailure {
                 println("Error en a llamada al api - Update Comment")
+                println(result.toString())
+                println(it.message)
             }
 
         }

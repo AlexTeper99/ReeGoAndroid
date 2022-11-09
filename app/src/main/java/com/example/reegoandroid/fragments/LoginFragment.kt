@@ -34,7 +34,7 @@ class LoginFragment : Fragment() {
     private lateinit var btnHelp: Button
     private lateinit var usernameInput: EditText
     private lateinit var passwordInput: EditText
-    private lateinit var btnAdmin: Button
+
     private val nodeRepository = NodeRepository(NodeApi.instance!!)
     companion object {
         fun newInstance() = LoginFragment()
@@ -54,7 +54,7 @@ class LoginFragment : Fragment() {
         btnHelp = v.findViewById(R.id.btnHelp)
         usernameInput = v.findViewById(R.id.usernameInput)
         passwordInput = v.findViewById(R.id.passwordInput)
-        btnAdmin = v.findViewById(R.id.adminBtn)
+
 
         return v
     }
@@ -66,7 +66,6 @@ class LoginFragment : Fragment() {
 
 
         btnLogin.setOnClickListener{
-
 
           //  val loginInfo = loginViewModel.login(usernameInput.text.toString(), passwordInput.text.toString())
             txtLoginTitulo.text = loginViewModel.tituloLogin
@@ -86,11 +85,22 @@ class LoginFragment : Fragment() {
                     Log.d("city", loginInfo.city)
                     Log.d("isAdmin", loginInfo.isAdmin.toString())
 
-                    resultSaveSP  = saveSharedPreferences(loginInfo.idUser.toString(), loginInfo.idPlot.toString(),  loginInfo.city,  loginInfo.isAdmin.toString() )
+                    resultSaveSP  = saveSharedPreferences(loginInfo.idUser.toString(), loginInfo.idPlot.toString(),  loginInfo.city,  loginInfo.isAdmin )
 
 
                     if(resultSaveSP){
-                     v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
+                        val sharedPref : SharedPreferences = requireContext().getSharedPreferences("Credenciales", Context.MODE_PRIVATE)
+                        var isAdmin = sharedPref.getBoolean("IsAdmin", false)!!
+
+                        if(isAdmin){
+                            v.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToBackofficeFragment())
+                        }else{
+                            v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
+                        }
+
+
+
+
                     }else{
                         Snackbar.make(v, "Ingrese un usuario o contraseña valido", Snackbar.LENGTH_SHORT).show()
                     }
@@ -121,10 +131,7 @@ class LoginFragment : Fragment() {
         }
 
         // Admin Screen / Should call after login with admin user
-        btnAdmin.setOnClickListener{
-            val navigateLoginToAdmin = LoginFragmentDirections.actionLoginFragmentToUserListFragment2()
-            v.findNavController().navigate(navigateLoginToAdmin)
-        }
+
 
 
     }
@@ -133,7 +140,7 @@ class LoginFragment : Fragment() {
         idUser: String,
         idPlot: String,
         city: String,
-        isAdmin: String
+        isAdmin: Boolean
     ): Boolean {
         val sharedPref : SharedPreferences = requireContext().getSharedPreferences("Credenciales", Context.MODE_PRIVATE)
 
@@ -141,14 +148,14 @@ class LoginFragment : Fragment() {
 
         editor.putString("UserId", idUser)
         editor.putString("UserPlot", idPlot)
-        editor.putString("IsAdmin",isAdmin)
+        editor.putBoolean("IsAdmin",isAdmin)
         editor.putString("City",city)
         editor.apply()
 
         var userId = sharedPref.getString("UserId", "FALLA SP")!!
         var plotId = sharedPref.getString("UserPlot", "FALLA SP")!!
         var city = sharedPref.getString("City", "FALLA SP")!!
-        var isAdmin = sharedPref.getString("IsAdmin", "FALLA SP")!!
+        var isAdmin = sharedPref.getBoolean("IsAdmin", false)!!
         println("shared preferences guardadas")
         println(userId)
         println(plotId)

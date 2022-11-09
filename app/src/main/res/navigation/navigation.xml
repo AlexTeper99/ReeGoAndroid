@@ -6,11 +6,6 @@
     app:startDestination="@id/irrigationListFragment">
 
     <fragment
-        android:id="@+id/backofficeFragment"
-        android:name="com.example.reegoandroid.fragments.BackofficeFragment"
-        android:label="fragment_backoffice"
-        tools:layout="@layout/fragment_backoffice" />
-    <fragment
         android:id="@+id/irrigationListFragment"
         android:name="com.example.reegoandroid.fragments.IrrigationListFragment"
         android:label="fragment_irrigation_list"

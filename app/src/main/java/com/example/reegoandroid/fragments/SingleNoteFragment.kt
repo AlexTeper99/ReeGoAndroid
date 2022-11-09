@@ -1,6 +1,7 @@
 package com.example.reegoandroid.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,6 +58,7 @@ class SingleNoteFragment : Fragment() {
         val noteId = SingleNoteFragmentArgs.fromBundle(requireArguments()).noteId
         val irrigationId = SingleNoteFragmentArgs.fromBundle(requireArguments()).irrigationId
         val noteText = SingleNoteFragmentArgs.fromBundle(requireArguments()).noteText
+        Log.d("NOTE ID", noteId.toString())
 
 
         txtNoteEditable.text = noteText
