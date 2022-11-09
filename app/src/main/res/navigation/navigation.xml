@@ -48,8 +48,8 @@
             android:name="irrigationId"
             app:argType="integer" />
         <action
-            android:id="@+id/action_singleNoteFragment_to_singleIrrigationFragment"
-            app:destination="@id/singleIrrigationFragment" />
+            android:id="@+id/action_singleNoteFragment_to_irrigationListFragment"
+            app:destination="@id/irrigationListFragment" />
     </fragment>
     <fragment
         android:id="@+id/sensorFragment"

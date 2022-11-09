@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.reegoandroid.R
 import com.example.reegoandroid.viewmodels.SingleNoteViewModel
 
@@ -69,7 +70,7 @@ class SingleNoteFragment : Fragment() {
 
             val newText = txtNoteEditable.text.toString()
             singleNoteViewModel.createComment(newText,irrigationId)
-            // Todo Redirect Back
+            v.findNavController().navigate(SingleNoteFragmentDirections.actionSingleNoteFragmentToIrrigationListFragment())
         }
 
         // Update a comment
@@ -77,13 +78,13 @@ class SingleNoteFragment : Fragment() {
 
             val newText = txtNoteEditable.text.toString()
             singleNoteViewModel.updateComment(noteId, newText)
-            // Todo Redirect Back
+            v.findNavController().navigate(SingleNoteFragmentDirections.actionSingleNoteFragmentToIrrigationListFragment())
         }
 
         // Delete a comment by id
         btnDeleteComment.setOnClickListener {
             singleNoteViewModel.deleteComment(noteId)
-            // Todo Redirect Back
+            v.findNavController().navigate(SingleNoteFragmentDirections.actionSingleNoteFragmentToIrrigationListFragment())
         }
 
 
