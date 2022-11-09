@@ -1,5 +1,7 @@
 package com.example.reegoandroid.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -35,7 +37,11 @@ class IrrigationListFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        irrigationListViewModel.getIrrigationList()
+        val sharedPref : SharedPreferences = requireContext().getSharedPreferences("Credenciales", Context.MODE_PRIVATE)
+
+        var plotId = sharedPref.getString("UserPlot", "FALLA SP")!!
+
+        irrigationListViewModel.getIrrigationList(plotId.toInt())
 
         irrigationListViewModel.irrigationListLive.observe(viewLifecycleOwner) { irrigationList ->
 

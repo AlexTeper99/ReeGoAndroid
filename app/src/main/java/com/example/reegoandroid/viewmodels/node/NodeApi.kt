@@ -30,8 +30,10 @@ interface NodeApi {
     ): ClimateData
 
     // Get Irrigation List
-    @GET("irrigations/1")
-    suspend fun getIrrigationList() : List<IrrigationData>
+    @GET("irrigations/{idPlot}") //  irrigations/Idplot
+    suspend fun getIrrigationList(
+        @Path("idPlot") id: Int,
+    ) : List<IrrigationData>
 
     // Get Comment List of a give Irrigation id
     @GET("comments/{id}")

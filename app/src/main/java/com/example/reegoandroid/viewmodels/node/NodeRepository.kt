@@ -18,11 +18,11 @@ class NodeRepository(private val api: NodeApi) {
         }
     }
 
-    suspend fun getIrrigationList(): Result<List<IrrigationData>>
+    suspend fun getIrrigationList(idPlot: Int): Result<List<IrrigationData>>
     {
         return try {
 
-            val response = api.getIrrigationList()
+            val response = api.getIrrigationList(idPlot)
             Result.success(response) 
             
             } catch (e: Exception) {

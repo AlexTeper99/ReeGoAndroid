@@ -11,9 +11,9 @@ import kotlinx.coroutines.launch
 
 class IrrigationListViewModel( private val nodeRepository: NodeRepository = NodeRepository(NodeApi.instance!!))
     : ViewModel() {
-    init {
-        this@IrrigationListViewModel.getIrrigationList()
-    }
+//    init {
+//        this@IrrigationListViewModel.getIrrigationList(idPlot : Int)
+//    }
 
     //Declaro las propiedades
     var irrigationList: MutableList<IrrigationData> = mutableListOf()
@@ -23,23 +23,17 @@ class IrrigationListViewModel( private val nodeRepository: NodeRepository = Node
     }
 
 
-    internal fun getIrrigationList() {
+    internal fun getIrrigationList(idPlot : Int) {
 
 
         val scope = CoroutineScope(Dispatchers.Default)
 
         scope.launch(Dispatchers.Default) {
-            val result = nodeRepository.getIrrigationList()
+            val result = nodeRepository.getIrrigationList(idPlot)
 
             result.onSuccess {
                 val irrigationList = it
                 irrigationListLive.postValue(it)
-                println("Irrigation List- From Climate Fake Api")
-                println("---------------------------")
-                println(irrigationList[0].idPlot.toString())
-
-                println("---------------------------")
-                println(irrigationList[1].idPlot.toString())
                 // All have to be Strings in the mutable lists
 
 
