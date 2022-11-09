@@ -56,7 +56,8 @@ class UserListFragment : Fragment() {
                     userList[pos].password,
                     userList[pos].idPlot,
                     userList[pos].name,
-                    userList[pos].isAdmin
+                    userList[pos].isAdmin,
+                    true
                 )
                 v.findNavController().navigate(action)
             }
@@ -81,7 +82,8 @@ class UserListFragment : Fragment() {
                     "",
                     0,
                     "",
-                    false
+                    false,
+                    isEdit = false
                 )
 
             v.findNavController().navigate(action)

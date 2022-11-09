@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -66,6 +67,14 @@ class SingleUserFragment : Fragment() {
         var userEmail   = SingleUserFragmentArgs.fromBundle(requireArguments()).userEmail
         var userPass    = SingleUserFragmentArgs.fromBundle(requireArguments()).userPassword
         var userIsAdmin = SingleUserFragmentArgs.fromBundle(requireArguments()).userIsAdmin
+        var isEdit = SingleUserFragmentArgs.fromBundle(requireArguments()).isEdit
+
+        if(isEdit){
+            btnCreateUser.isVisible = false
+        }else{
+            btnDeleteUser.isVisible = false
+            btnUpdateUser.isVisible = false
+        }
 
         txtTitle.text = "Editar Usuario"
 

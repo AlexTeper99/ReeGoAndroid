@@ -21,7 +21,7 @@
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/drawable/ic_launcher_background.xml" value="0.128" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/activity_main2.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/fragment_backoffice.xml" value="0.152" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/fragment_backoffice.xml" value="0.12" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/fragment_help.xml" value="0.2" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/fragment_irrigation_list.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/fragment_login.xml" value="0.264" />
@@ -29,7 +29,7 @@
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/fragment_sensor.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/fragment_single_irrigation.xml" value="0.536" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/fragment_single_note.xml" value="0.264" />
-        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/fragment_single_user.xml" value="0.14814814814814814" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/fragment_single_user.xml" value="0.264" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/fragment_user_list.xml" value="0.4" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/item_irrigation.xml" value="0.2916666666666667" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/ReeGoAndroid/app/src/main/res/layout/item_sensor.xml" value="0.29270833333333335" />

@@ -54,13 +54,17 @@
         android:id="@+id/editTextUserPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
         android:layout_marginBottom="16dp"
         android:autoText="false"
         android:ems="10"
         android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:text="pass"
         app:layout_constraintBottom_toTopOf="@+id/editTextIdParcela"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUserEmail" />
 
     <EditText
         android:id="@+id/editTextIdParcela"
@@ -69,6 +73,7 @@
         android:layout_marginBottom="340dp"
         android:ems="10"
         android:inputType="numberSigned"
+        android:minHeight="48dp"
         android:text="Id Parcela"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,20 +98,23 @@
         android:text="Enviar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.322"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userIsAdminCheckbox"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.061" />
 
     <Button
         android:id="@+id/updateUserBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="36dp"
         android:text="Actualizar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.138"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userIsAdminCheckbox" />
+        app:layout_constraintTop_toBottomOf="@+id/userIsAdminCheckbox"
+        app:layout_constraintVertical_bias="0.005" />
 
     <Button
         android:id="@+id/deleteUserBtn"
@@ -115,10 +123,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="37dp"
         android:text="Borrar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintHorizontal_bias="0.248"
         app:layout_constraintStart_toEndOf="@+id/updateUserBtn"
-        app:layout_constraintTop_toBottomOf="@+id/userIsAdminCheckbox" />
+        app:layout_constraintTop_toBottomOf="@+id/userIsAdminCheckbox"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txtUserIdSingleUser"
