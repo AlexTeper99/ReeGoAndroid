@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -37,13 +38,6 @@ class SingleNoteFragment : Fragment() {
         btnUpdateComment = v.findViewById(R.id.updateNoteTextBtn)
         btnDeleteComment = v.findViewById(R.id.deleteNoteBtn)
 
-        val isEdit = SingleNoteFragmentArgs.fromBundle(requireArguments()).isEdit
-
-        if (isEdit) {
-            // TODO set visibility of edit true / create false
-        } else {
-            // TODO set visibility of create true / edit false
-        }
 
 
 
@@ -63,6 +57,21 @@ class SingleNoteFragment : Fragment() {
 
 
         txtNoteEditable.text = noteText
+
+
+        val isEdit = SingleNoteFragmentArgs.fromBundle(requireArguments()).isEdit
+        println("IS EDITTTT")
+        println(isEdit)
+
+        if (isEdit) {
+            btnCreateComment.isVisible = false
+            btnUpdateComment.isVisible = true
+            btnDeleteComment.isVisible = true
+        } else {
+            btnCreateComment.isVisible = true
+            btnUpdateComment.isVisible = false
+            btnDeleteComment.isVisible = false
+        }
 
 
         // Create a comment

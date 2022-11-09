@@ -33,9 +33,10 @@
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSingleNoteTitle"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
@@ -47,10 +48,10 @@
         android:text="+ Actualizar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/deleteNoteBtn"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.617"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/singleCommentEditText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.441" />
 
     <Button
         android:id="@+id/deleteNoteBtn"
@@ -60,22 +61,20 @@
         android:text="Eliminar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.842"
+        app:layout_constraintHorizontal_bias="0.763"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/singleCommentEditText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.441" />
 
     <Button
         android:id="@+id/createNoteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
-        android:layout_marginBottom="10dp"
         android:text="+ CREAR"
-        app:layout_constraintBottom_toTopOf="@+id/updateNoteTextBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/singleCommentEditText" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.71" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

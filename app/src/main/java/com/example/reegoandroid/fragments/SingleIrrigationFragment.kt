@@ -76,7 +76,7 @@ class SingleIrrigationFragment : Fragment() {
                         commentList[pos].text,
                         commentList[pos].id,
                         irrigationId,
-                        isEdit = false
+                        isEdit = true
                     )
                 v.findNavController().navigate(action)
             }
