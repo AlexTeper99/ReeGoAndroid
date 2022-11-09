@@ -59,6 +59,12 @@
         <argument
             android:name="userIsAdmin"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_singleUserFragment2_to_userListFragment2"
+            app:destination="@id/userListFragment2" />
+        <action
+            android:id="@+id/action_singleUserFragment2_to_userListFragment22"
+            app:destination="@id/userListFragment2" />
     </fragment>
     <fragment
         android:id="@+id/backofficeFragment"

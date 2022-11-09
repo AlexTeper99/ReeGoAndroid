@@ -9,6 +9,7 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.reegoandroid.R
 import com.example.reegoandroid.viewmodels.SingleUserViewModel
 
@@ -92,7 +93,7 @@ class SingleUserFragment : Fragment() {
                 userIsAdmin
             )
 
-            // TODO REDIRECT BACK TO USER LIST
+            v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToUserListFragment2())
         }
 
         // UPDATE a user
@@ -113,13 +114,15 @@ class SingleUserFragment : Fragment() {
                 userIsAdmin
             )
 
-            // TODO REDIRECT BACK TO USER LIST
+
+            v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToUserListFragment2())
         }
 
         // DELETE a user
         btnDeleteUser.setOnClickListener {
             singleUserViewModel.deleteUser(userId)
-            // TODO REDIRECT BACK TO USER LIST
+            v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToUserListFragment2())
+
         }
 
     }

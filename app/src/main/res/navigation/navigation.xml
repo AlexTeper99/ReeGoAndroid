@@ -47,6 +47,9 @@
         <argument
             android:name="irrigationId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_singleNoteFragment_to_singleIrrigationFragment"
+            app:destination="@id/singleIrrigationFragment" />
     </fragment>
     <fragment
         android:id="@+id/sensorFragment"
