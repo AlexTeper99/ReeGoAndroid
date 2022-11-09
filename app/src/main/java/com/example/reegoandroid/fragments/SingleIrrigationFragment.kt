@@ -20,7 +20,10 @@ class SingleIrrigationFragment : Fragment() {
     private lateinit var txtTitle : TextView
     private lateinit var txtIrrigationId : TextView
     private lateinit var txtIrrigationIdValue : TextView
-
+    private lateinit var txtIrrigationDate: TextView
+    private lateinit var txtIrrigationDateValue: TextView
+    private lateinit var txtIrrigationWater: TextView
+    private lateinit var txtIrrigationWaterValue: TextView
     lateinit var btnAddComment: Button
 
 
@@ -40,6 +43,11 @@ class SingleIrrigationFragment : Fragment() {
         txtTitle = v.findViewById(R.id.txtSingleIrrigationTitle)
         txtIrrigationId = v.findViewById(R.id.txtIrrigationId)
         txtIrrigationIdValue = v.findViewById(R.id.txtIrrigationIdValue)
+
+        txtIrrigationDate = v.findViewById(R.id.txtIrrigationDate)
+        txtIrrigationDateValue = v.findViewById(R.id.txtIrrigationDateValue)
+        txtIrrigationWater = v.findViewById(R.id.txtIrrigationWater)
+        txtIrrigationWaterValue = v.findViewById(R.id.txtIrrigationWaterValue)
 
         btnAddComment = v.findViewById(R.id.btnNewComment)
 
