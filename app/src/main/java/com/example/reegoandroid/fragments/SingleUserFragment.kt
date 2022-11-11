@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.TextView
+import android.widget.*
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -21,11 +19,11 @@ class SingleUserFragment : Fragment() {
     private lateinit var txtName      : TextView
     private lateinit var txtEmail     : TextView
     private lateinit var txtPassword  : TextView
-    private lateinit var txtCity    : TextView
+    private lateinit var txtCity      : TextView
     private lateinit var txtIsAdmin   : CheckBox
 
     private lateinit var txtPlotDesc : TextView
-    private lateinit var txtAutocompleteCropType : TextView
+    private lateinit var txtAutocompleteCropType : AutoCompleteTextView
 
     lateinit var btnCreateUser: Button
     lateinit var btnUpdateUser: Button
@@ -59,17 +57,13 @@ class SingleUserFragment : Fragment() {
         btnUpdateUser = v.findViewById(R.id.updateUserBtn)
         btnDeleteUser = v.findViewById(R.id.deleteUserBtn)
 
+
         return v
     }
 
     override fun onStart() {
         super.onStart()
 
-
-
-//        val cropTypeList: List<String> by lazy {
-//            List<String>(3)
-//        }
 
         val userId      = SingleUserFragmentArgs.fromBundle(requireArguments()).userId
         var userName    = SingleUserFragmentArgs.fromBundle(requireArguments()).userName
@@ -81,7 +75,6 @@ class SingleUserFragment : Fragment() {
         var userPlotDesc  = SingleUserFragmentArgs.fromBundle(requireArguments()).userPlotDesc
         var cropType = SingleUserFragmentArgs.fromBundle(requireArguments()).userCropType
 
-        var userCropId  = SingleUserFragmentArgs.fromBundle(requireArguments()).userCropId
 
 
         var isEdit = SingleUserFragmentArgs.fromBundle(requireArguments()).isEdit
@@ -102,9 +95,18 @@ class SingleUserFragment : Fragment() {
         txtIsAdmin.isChecked = userIsAdmin
 
         txtPlotDesc.text = userPlotDesc
-        txtAutocompleteCropType.text = cropType
 
-        // TODO AUTOCOMPLETE LIST
+
+        var cropOptions = arrayOf("Trigo","Soja", "Maiz")
+
+        val arrayAdapter : ArrayAdapter<String> = ArrayAdapter<String>(
+            requireContext(), android.R.layout.simple_list_item_1, cropOptions)
+
+        txtAutocompleteCropType.threshold = 1
+        txtAutocompleteCropType.setAdapter(arrayAdapter)
+        txtAutocompleteCropType.setText(cropType)
+
+
 
 
         // CREATE a user
