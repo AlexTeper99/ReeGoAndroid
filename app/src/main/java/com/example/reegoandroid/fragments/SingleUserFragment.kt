@@ -21,8 +21,11 @@ class SingleUserFragment : Fragment() {
     private lateinit var txtName      : TextView
     private lateinit var txtEmail     : TextView
     private lateinit var txtPassword  : TextView
-    private lateinit var txtIdParcela : TextView
+    private lateinit var txtCity    : TextView
     private lateinit var txtIsAdmin   : CheckBox
+
+    private lateinit var txtPlotDesc : TextView
+    private lateinit var txtAutocompleteCropType : TextView
 
     lateinit var btnCreateUser: Button
     lateinit var btnUpdateUser: Button
@@ -45,8 +48,11 @@ class SingleUserFragment : Fragment() {
         txtName      = v.findViewById(R.id.editTextUserName)
         txtEmail     = v.findViewById(R.id.editTextUserEmail)
         txtPassword  = v.findViewById(R.id.editTextUserPassword)
-        txtIdParcela = v.findViewById(R.id.editTextIdParcela)
+        txtCity      = v.findViewById(R.id.editTextCity)
         txtIsAdmin   = v.findViewById(R.id.userIsAdminCheckbox)
+
+        txtPlotDesc  = v.findViewById(R.id.editTextPlotDescription)
+        txtAutocompleteCropType = v.findViewById(R.id.selectCroptAutoCompleteText)
 
         // Setup Buttons
         btnCreateUser = v.findViewById(R.id.createNewUserBtn)
@@ -59,14 +65,25 @@ class SingleUserFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        // Important
-        val userId      = SingleUserFragmentArgs.fromBundle(requireArguments()).userId
 
-        var userPlotId  = SingleUserFragmentArgs.fromBundle(requireArguments()).userPlotId
+
+//        val cropTypeList: List<String> by lazy {
+//            List<String>(3)
+//        }
+
+        val userId      = SingleUserFragmentArgs.fromBundle(requireArguments()).userId
         var userName    = SingleUserFragmentArgs.fromBundle(requireArguments()).userName
         var userEmail   = SingleUserFragmentArgs.fromBundle(requireArguments()).userEmail
         var userPass    = SingleUserFragmentArgs.fromBundle(requireArguments()).userPassword
+        var plotCity    = SingleUserFragmentArgs.fromBundle(requireArguments()).userCity
         var userIsAdmin = SingleUserFragmentArgs.fromBundle(requireArguments()).userIsAdmin
+
+        var userPlotDesc  = SingleUserFragmentArgs.fromBundle(requireArguments()).userPlotDesc
+        var cropType = SingleUserFragmentArgs.fromBundle(requireArguments()).userCropType
+
+        var userCropId  = SingleUserFragmentArgs.fromBundle(requireArguments()).userCropId
+
+
         var isEdit = SingleUserFragmentArgs.fromBundle(requireArguments()).isEdit
 
         if(isEdit){
@@ -81,8 +98,13 @@ class SingleUserFragment : Fragment() {
         txtName.text      = userName
         txtEmail.text     = userEmail
         txtPassword.text  = userPass
-        txtIdParcela.text = userPlotId.toString()
+        txtCity.text      = plotCity
         txtIsAdmin.isChecked = userIsAdmin
+
+        txtPlotDesc.text = userPlotDesc
+        txtAutocompleteCropType.text = cropType
+
+        // TODO AUTOCOMPLETE LIST
 
 
         // CREATE a user
@@ -91,15 +113,19 @@ class SingleUserFragment : Fragment() {
             var userName    = txtName.text.toString()
             var userEmail   = txtEmail.text.toString()
             var userPass    = txtPassword.text.toString()
-            var userPlotId  = txtIdParcela.text.toString().toInt()
             var userIsAdmin = txtIsAdmin.isChecked
+            var plotCity    = txtCity.text.toString()
+            var plotDesc    = txtPlotDesc.text.toString()
+            var cropType    = txtAutocompleteCropType.text.toString()
 
             singleUserViewModel.createUser(
                 userName,
                 userEmail,
                 userPass,
-                userPlotId,
-                userIsAdmin
+                userIsAdmin,
+                plotCity,
+                plotDesc,
+                cropType
             )
 
             v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToUserListFragment2())
@@ -111,18 +137,21 @@ class SingleUserFragment : Fragment() {
             var userName    = txtName.text.toString()
             var userEmail   = txtEmail.text.toString()
             var userPass    = txtPassword.text.toString()
-            var userPlotId  = txtIdParcela.text.toString().toInt()
             var userIsAdmin = txtIsAdmin.isChecked
+            var plotCity    = txtCity.text.toString()
+            var plotDesc    = txtPlotDesc.text.toString()
+            var cropType    = txtAutocompleteCropType.text.toString()
 
             singleUserViewModel.updateUser(
                 userId,
                 userName,
                 userEmail,
                 userPass,
-                userPlotId,
-                userIsAdmin
+                userIsAdmin,
+                plotCity,
+                plotDesc,
+                cropType
             )
-
 
             v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToUserListFragment2())
         }

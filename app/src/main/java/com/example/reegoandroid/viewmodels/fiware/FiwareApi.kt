@@ -20,19 +20,6 @@ interface FiwareApi {
             .create(FiwareApi::class.java)
     }
 
-
-    // example post some data via SensorRequestBody
-//    @POST("iot")
-//    suspend fun getSensorData(
-//        @Header("Content-Type") cType: String= "application/json",
-//        @Body reqBody: SensorRequestBody = SensorRequestBody(
-//                                           "ambiente:001",
-//                                           "sensor",
-//                                           "/")
-//        ): SensorData
-
-
-
     @GET("iot")
     suspend fun getSensorData(
         @Header("Content-Type") cType: String= "application/json",
