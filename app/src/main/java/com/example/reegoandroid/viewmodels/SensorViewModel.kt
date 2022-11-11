@@ -78,18 +78,14 @@ class SensorViewModel(
 
             result.onSuccess {
                 val sensorInfo = it
-                println("Sensor Info - Node")
-                println("---------------------------")
-                println(sensorInfo.acidity.value)
-                println(sensorInfo.humidity.value)
-                println(sensorInfo.temperature.value)
-                println("---------------------------")
 
-                var ac = sensorInfo.acidity.value
-                var hu = sensorInfo.humidity.value
-                var te = sensorInfo.temperature.value
+                if (it != null) {
+                    var ac = sensorInfo.acidity.value
+                    var hu = sensorInfo.humidity.value
+                    var te = sensorInfo.temperature.value
 
-                this@SensorViewModel.setSensorData(ac,hu,te)
+                    this@SensorViewModel.setSensorData(ac,hu,te)
+                }
 
             }.onFailure {
                 println("Error en Llamada al API Sensor")

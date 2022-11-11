@@ -51,13 +51,16 @@ class UserListFragment : Fragment() {
             userAdapter = UserAdapter(userList.toMutableList()) { pos: Int ->
                 val action = UserListFragmentDirections.actionUserListFragment2ToSingleUserFragment2(
 
-                    userList[pos].id,
+                    userList[pos].userId,
                     userList[pos].email,
                     userList[pos].password,
-                    userList[pos].idPlot,
+                    userList[pos].idCrop,
                     userList[pos].name,
                     userList[pos].isAdmin,
-                    true
+                    true,
+                    userList[pos].plotCity,
+                    userList[pos].plotDescription,
+                    userList[pos].cropType,
                 )
                 v.findNavController().navigate(action)
             }
@@ -83,7 +86,10 @@ class UserListFragment : Fragment() {
                     0,
                     "",
                     false,
-                    isEdit = false
+                    isEdit = false,
+                    "",
+                    "",
+                    ""
                 )
 
             v.findNavController().navigate(action)

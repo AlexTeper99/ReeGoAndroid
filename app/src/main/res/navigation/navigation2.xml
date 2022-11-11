@@ -51,7 +51,7 @@
         <argument android:name="userPassword"
             app:argType="string" />
         <argument
-            android:name="userPlotId"
+            android:name="userCropId"
             app:argType="integer" />
         <argument
             android:name="userName"
@@ -67,6 +67,18 @@
             app:destination="@id/userListFragment2" />
         <argument android:name="isEdit"
             app:argType="boolean" />
+        <argument
+            android:name="userCity"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="userPlotDesc"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="userCropType"
+            app:argType="string"
+            android:defaultValue='"Tipo Cultivo"' />
     </fragment>
     <fragment
         android:id="@+id/backofficeFragment"

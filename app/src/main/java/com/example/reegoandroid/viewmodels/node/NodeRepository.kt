@@ -1,16 +1,12 @@
 package com.example.reegoandroid.viewmodels.node
 
-import android.util.Log
-import retrofit2.http.Query
-
 class NodeRepository(private val api: NodeApi) {
     // returns climate data
-    suspend fun getClimateData(): Result<ClimateData>
+    suspend fun getClimateData(city: String): Result<ClimateData>
     {
         return try {
 
-
-            val response = api.getClimateData()
+            val response = api.getClimateData(city)
             Result.success(response)
         
         } catch (e: Exception) {
@@ -92,16 +88,21 @@ class NodeRepository(private val api: NodeApi) {
         userName:String,
         userEmail:String,
         userPass:String,
-        userPlotId:Int,
-        userIsAdmin:Boolean
+        userIsAdmin: Boolean,
+        plotCity: String,
+        plotDesc: String,
+        cropType: String
+
     ): Result<String> {
         return try {
             val response = api.createUser(
                 userName,
                 userEmail,
                 userPass,
-                userPlotId,
-                userIsAdmin
+                userIsAdmin,
+                plotCity,
+                plotDesc,
+                cropType
             )
             Result.success(response)
 
@@ -115,8 +116,10 @@ class NodeRepository(private val api: NodeApi) {
         userName:String,
         userEmail:String,
         userPass:String,
-        userPlotId:Int,
-        userIsAdmin:Boolean
+        userIsAdmin: Boolean,
+        plotCity: String,
+        plotDesc: String,
+        cropType: String
     ): Result<String> {
         return try {
             val response = api.updateUser(
@@ -124,8 +127,10 @@ class NodeRepository(private val api: NodeApi) {
                 userName,
                 userEmail,
                 userPass,
-                userPlotId,
-                userIsAdmin
+                userIsAdmin,
+                plotCity,
+                plotDesc,
+                cropType
             )
             Result.success(response)
 
@@ -150,6 +155,18 @@ class NodeRepository(private val api: NodeApi) {
     suspend fun deleteUser(userId:Int): Result<String> {
         return try {
             val response = api.deleteUser(userId)
+            Result.success(response)
+
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getBackofficeInfo(): Result<BackofficeData>
+    {
+        return try {
+
+            val response = api.getBackofficeData()
             Result.success(response)
 
         } catch (e: Exception) {

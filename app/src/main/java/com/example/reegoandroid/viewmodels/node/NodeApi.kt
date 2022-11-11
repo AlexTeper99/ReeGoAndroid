@@ -11,22 +11,17 @@ interface NodeApi {
     companion object {
         val instance: NodeApi? = Retrofit
             .Builder()
-            .baseUrl("http://192.168.0.160/")
-        //.baseUrl("https://mocki.io/v1/")
+            .baseUrl("http://192.168.0.39/")
             .addConverterFactory(MoshiConverterFactory.create())
             .client(OkHttpClient.Builder().build())
             .build()
             .create(NodeApi::class.java)
     }
 
-    // CLIMATE ENDPIONT
-    @GET("weatherInfo/buenosaires")
+    // Get climate data from weather api
+    @GET("weatherInfo/{cityString}")
     suspend fun getClimateData(
-        // @Header("Fiware-Service") fiwareService: String="sensor",
-        // @Header("Fiware-ServicePath") fiwareServicePath: String="/",
-//        @Header("Accept") fiwareServicePath: String= "application/json",
-        // @Body(objeto) - envia al endpoint el objeto directamente - lo convierte a json
-
+        @Path("cityString") city: String,
     ): ClimateData
 
     // Get Irrigation List
@@ -37,16 +32,9 @@ interface NodeApi {
 
     // Get Comment List of a give Irrigation id
     @GET("comments/{id}")
-    //@GET("irrigation/1/comments")
     suspend fun getIrrigationComments(
         @Path("id") id: Int,
     ) : List<NoteData>
-
-    // User List Endpoint
-    @GET("users")
-    suspend fun getUserList(
-        @Header("Accept") fiwareServicePath: String= "application/json",
-    ): MutableList<UserData>
 
     // Update Comment
     @PUT("comment/{id}")
@@ -68,23 +56,33 @@ interface NodeApi {
         @Query("idIrrigation") irrigationId: Int,
     ) : String
 
-    @POST("user")
+    // Get All Users, With Aditional Info
+    @GET("users/info")
+    suspend fun getUserList(
+        @Header("Accept") fiwareServicePath: String= "application/json",
+    ): MutableList<UserData>
+
+    @POST("user/plot")
     suspend fun createUser(
         @Query("name") userName: String,
         @Query("email") userEmail: String,
         @Query("password") userPass: String,
-        @Query("plotId") userPlotId: Int,
         @Query("isAdmin") userIsadmin: Boolean,
+        @Query("plotCity") plotCity: String,
+        @Query("plotDescription") plotDesc: String,
+        @Query("cropType") cropType: String,
     ) : String
 
-    @PUT("user")
+    @PUT("user/plot")
     suspend fun updateUser(
         @Query("userId") userId: Int,
         @Query("name") userName: String,
         @Query("email") userEmail: String,
         @Query("password") userPass: String,
-        @Query("plotId") userPlotId: Int,
         @Query("isAdmin") userIsadmin: Boolean,
+        @Query("plotCity") plotCity: String,
+        @Query("plotDescription") plotDesc: String,
+        @Query("cropType") cropType: String,
     ) : String
 
     // Update Comment
@@ -98,5 +96,8 @@ interface NodeApi {
         @Query("email") email: String,
         @Query("password") password: String,
     ) : LoginData
+
+    @GET("stats")
+    suspend fun getBackofficeData() : BackofficeData
 
 }

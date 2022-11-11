@@ -10,16 +10,16 @@
     <TextView
         android:id="@+id/txtSingleUserTitle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="22dp"
         android:layout_marginStart="147dp"
-        android:layout_marginTop="89dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="147dp"
-        android:layout_marginBottom="623dp"
+        android:layout_marginBottom="16dp"
         android:text="Usuario"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUserName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.031"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -27,13 +27,14 @@
     <EditText
         android:id="@+id/editTextUserName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:ems="10"
+        android:hint="Nombre"
         android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="Nombre"
+        android:minHeight="28dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextUserEmail"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSingleUserTitle" />
 
@@ -41,106 +42,146 @@
         android:id="@+id/editTextUserEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="76dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="12dp"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:text="Email"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextUserPassword"
+        android:minHeight="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUserPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUserName" />
 
     <EditText
         android:id="@+id/editTextUserPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="9dp"
         android:autoText="false"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:text="pass"
-        app:layout_constraintBottom_toTopOf="@+id/editTextIdParcela"
+        android:minHeight="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextCity"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextUserEmail" />
 
     <EditText
-        android:id="@+id/editTextIdParcela"
+        android:id="@+id/editTextCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="340dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="1dp"
         android:ems="10"
-        android:inputType="numberSigned"
-        android:minHeight="48dp"
-        android:text="Id Parcela"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:hint="Ciudad"
+        android:inputType="text"
+        android:minHeight="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/userIsAdminCheckbox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUserPassword" />
 
     <CheckBox
         android:id="@+id/userIsAdminCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="Es Admin"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPlotDescription"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.312"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextIdParcela"
-        app:layout_constraintVertical_bias="0.078" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextCity" />
 
     <Button
         android:id="@+id/createNewUserBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="136dp"
         android:text="Enviar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userIsAdminCheckbox"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/deleteUserBtn"
+        app:layout_constraintTop_toBottomOf="@+id/selectCroptAutoCompleteText" />
 
     <Button
         android:id="@+id/updateUserBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:layout_marginBottom="136dp"
         android:text="Actualizar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.138"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userIsAdminCheckbox"
-        app:layout_constraintVertical_bias="0.005" />
+        app:layout_constraintTop_toBottomOf="@+id/selectCroptAutoCompleteText" />
 
     <Button
         android:id="@+id/deleteUserBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="136dp"
         android:text="Borrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintHorizontal_bias="0.007"
         app:layout_constraintStart_toEndOf="@+id/updateUserBtn"
-        app:layout_constraintTop_toBottomOf="@+id/userIsAdminCheckbox"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/selectCroptAutoCompleteText" />
 
     <TextView
         android:id="@+id/txtUserIdSingleUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="158dp"
         android:layout_marginBottom="24dp"
         android:text="id"
         app:layout_constraintBottom_toTopOf="@+id/editTextUserName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/txtSingleUserTitle"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextPlotDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:hint="Descripcion Parcela"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/selectCroptAutoCompleteText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userIsAdminCheckbox" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/selectCroptAutoCompleteText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="95dp"
+        android:hint="Elegir Tipo Cultivo            "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPlotDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

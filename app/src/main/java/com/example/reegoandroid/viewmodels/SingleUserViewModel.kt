@@ -12,12 +12,13 @@ class SingleUserViewModel (private val nodeRepository: NodeRepository = NodeRepo
         init {}
 
     internal fun createUser(
-
         userName:String,
         userEmail:String,
         userPass:String,
-        userPlotId:Int,
-        userIsAdmin: Boolean
+        userIsAdmin: Boolean,
+        plotCity: String,
+        plotDesc: String,
+        cropType: String
     ) {
         val scope = CoroutineScope(Dispatchers.Default)
         scope.launch {
@@ -26,8 +27,10 @@ class SingleUserViewModel (private val nodeRepository: NodeRepository = NodeRepo
                 userName,
                 userEmail,
                 userPass,
-                userPlotId,
-                userIsAdmin
+                userIsAdmin,
+                plotCity,
+                plotDesc,
+                cropType
             );
 
             result.onSuccess {
@@ -43,8 +46,10 @@ class SingleUserViewModel (private val nodeRepository: NodeRepository = NodeRepo
         userName:String,
         userEmail:String,
         userPass:String,
-        userPlotId:Int,
-        userIsAdmin: Boolean
+        userIsAdmin: Boolean,
+        plotCity: String,
+        plotDesc: String,
+        cropType: String
     ) {
         val scope = CoroutineScope(Dispatchers.Default)
         scope.launch {
@@ -54,8 +59,10 @@ class SingleUserViewModel (private val nodeRepository: NodeRepository = NodeRepo
                 userName,
                 userEmail,
                 userPass,
-                userPlotId,
-                userIsAdmin
+                userIsAdmin,
+                plotCity,
+                plotDesc,
+                cropType
             );
 
             result.onSuccess {

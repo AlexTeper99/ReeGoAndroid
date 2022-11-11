@@ -12,9 +12,9 @@ import kotlinx.coroutines.launch
 class MyInformationViewModel(
     private val nodeRepository: NodeRepository = NodeRepository(NodeApi.instance!!)
 ) : ViewModel() {
-        init {
-        this@MyInformationViewModel.getClimateData()
-    }
+//        init {
+//             this@MyInformationViewModel.getClimateData("")
+//        }
 
     val atmospheric_contition: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
@@ -43,6 +43,8 @@ class MyInformationViewModel(
         MutableLiveData<String>()
     }
 
+
+
     internal fun setClimateData(atmospheric_contition: String, humidity: String, location: String, rainDesc: String, raining: String, temperature: String, time: String) {
         this.atmospheric_contition.postValue(atmospheric_contition)
         this.humidity.postValue(humidity)
@@ -53,12 +55,15 @@ class MyInformationViewModel(
         this.time.postValue(time)
     }
 
-    internal fun getClimateData() {
+    internal fun getClimateData(city: String) {
 
         val scope = CoroutineScope(Dispatchers.Default)
 
+        //  ! TODO GET USER / PLOT CITY DATA from session
         scope.launch(Dispatchers.Default) {
-            val result = nodeRepository.getClimateData()
+
+
+            val result = nodeRepository.getClimateData(city)
 
             result.onSuccess {
                 val climateInfo = it
@@ -86,7 +91,7 @@ class MyInformationViewModel(
                 this@MyInformationViewModel.setClimateData(ac,hu,lo,rd,ra,te,ti)
 
             }.onFailure {
-                println("ERROR En la llamada al api")
+                println("ERROR En la llamada al api Climate Info")
                 println("Error: ${it.message}")
             }
             
