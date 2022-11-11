@@ -96,6 +96,13 @@ class SingleUserFragment : Fragment() {
 
         txtPlotDesc.text = userPlotDesc
 
+        //fun AutoCompleteTextView.showDropdown(adapter: ArrayAdapter<String>?) {
+        //    if(!TextUtils.isEmpty(this.text.toString())){
+        //        adapter?.filter?.filter(null)
+        //    }
+        // }
+
+        // Not working - is context ok ? requireContext()
 
         var cropOptions = arrayOf("Trigo","Soja", "Maiz")
 
@@ -106,8 +113,7 @@ class SingleUserFragment : Fragment() {
         txtAutocompleteCropType.setAdapter(arrayAdapter)
         txtAutocompleteCropType.setText(cropType)
 
-
-
+        // txtAutocompleteCropType.showDropdown(arrayAdapter)
 
         // CREATE a user
         btnCreateUser.setOnClickListener {
