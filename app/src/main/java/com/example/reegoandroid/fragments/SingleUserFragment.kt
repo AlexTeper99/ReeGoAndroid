@@ -50,14 +50,11 @@ class SingleUserFragment : Fragment() {
         txtIsAdmin   = v.findViewById(R.id.userIsAdminCheckbox)
 
         txtPlotDesc  = v.findViewById(R.id.editTextPlotDescription)
-        //txtAutocompleteCropType = v.findViewById(R.id.selectCroptAutoCompleteText)
-
 
         // Setup Buttons
         btnCreateUser = v.findViewById(R.id.createNewUserBtn)
         btnUpdateUser = v.findViewById(R.id.updateUserBtn)
         btnDeleteUser = v.findViewById(R.id.deleteUserBtn)
-
 
         return v
     }
@@ -75,8 +72,6 @@ class SingleUserFragment : Fragment() {
 
         var userPlotDesc  = SingleUserFragmentArgs.fromBundle(requireArguments()).userPlotDesc
         var cropType = SingleUserFragmentArgs.fromBundle(requireArguments()).userCropType
-
-
 
         var isEdit = SingleUserFragmentArgs.fromBundle(requireArguments()).isEdit
 
@@ -97,6 +92,8 @@ class SingleUserFragment : Fragment() {
 
         txtPlotDesc.text = userPlotDesc
 
+
+        // Setup Spinner to select crop type
         val cropTypes   = arrayOf("Trigo","Soja", "Maiz")
         val cropSpinner : Spinner = v.findViewById(R.id.cropTypeSpinner)
 
