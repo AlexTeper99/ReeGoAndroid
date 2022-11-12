@@ -47,7 +47,8 @@ class UserListFragment : Fragment() {
         userListViewModel.getAllUsers()
 
         userListViewModel.userListLive.observe(viewLifecycleOwner) { userList ->
-            
+
+
             userAdapter = UserAdapter(userList.toMutableList()) { pos: Int ->
                 val action = UserListFragmentDirections.actionUserListFragment2ToSingleUserFragment2(
 
@@ -61,6 +62,7 @@ class UserListFragment : Fragment() {
                     userList[pos].plotCity,
                     userList[pos].plotDescription,
                     userList[pos].cropType,
+
                 )
                 v.findNavController().navigate(action)
             }

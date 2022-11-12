@@ -34,7 +34,6 @@
         android:minHeight="28dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextUserEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSingleUserTitle" />
 
@@ -58,7 +57,6 @@
         android:id="@+id/editTextUserPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="9dp"
         android:autoText="false"
         android:ems="10"
@@ -67,7 +65,7 @@
         android:minHeight="28dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextCity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextUserEmail" />
 
@@ -75,7 +73,6 @@
         android:id="@+id/editTextCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="1dp"
         android:ems="10"
         android:hint="Ciudad"
@@ -83,7 +80,7 @@
         android:minHeight="28dp"
         app:layout_constraintBottom_toTopOf="@+id/userIsAdminCheckbox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextUserPassword" />
 
@@ -104,42 +101,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
-        android:layout_marginTop="36dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginBottom="100dp"
         android:text="Enviar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/deleteUserBtn"
-        app:layout_constraintTop_toBottomOf="@+id/selectCroptAutoCompleteText" />
+        app:layout_constraintStart_toEndOf="@+id/deleteUserBtn" />
 
     <Button
         android:id="@+id/updateUserBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginBottom="100dp"
         android:text="Actualizar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.138"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectCroptAutoCompleteText" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/deleteUserBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginBottom="100dp"
         android:text="Borrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.007"
-        app:layout_constraintStart_toEndOf="@+id/updateUserBtn"
-        app:layout_constraintTop_toBottomOf="@+id/selectCroptAutoCompleteText" />
+        app:layout_constraintStart_toEndOf="@+id/updateUserBtn" />
 
     <TextView
         android:id="@+id/txtUserIdSingleUser"
@@ -161,25 +152,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="102dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="15dp"
         android:ems="10"
         android:hint="Descripcion Parcela"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/selectCroptAutoCompleteText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userIsAdminCheckbox" />
 
-    <MultiAutoCompleteTextView
-        android:id="@+id/selectCroptAutoCompleteText"
+    <Spinner
+        android:id="@+id/cropTypeSpinner"
+        android:layout_width="249dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="99dp"
+        app:layout_constraintBottom_toTopOf="@+id/createNewUserBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPlotDescription" />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="95dp"
-        android:hint="Elegir Tipo Cultivo            "
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="215dp"
+        android:layout_marginBottom="12dp"
+        android:text="Elegir Cultivo"
+        app:layout_constraintBottom_toTopOf="@+id/cropTypeSpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPlotDescription" />

@@ -50,7 +50,8 @@ class SingleUserFragment : Fragment() {
         txtIsAdmin   = v.findViewById(R.id.userIsAdminCheckbox)
 
         txtPlotDesc  = v.findViewById(R.id.editTextPlotDescription)
-        txtAutocompleteCropType = v.findViewById(R.id.selectCroptAutoCompleteText)
+        //txtAutocompleteCropType = v.findViewById(R.id.selectCroptAutoCompleteText)
+
 
         // Setup Buttons
         btnCreateUser = v.findViewById(R.id.createNewUserBtn)
@@ -96,24 +97,18 @@ class SingleUserFragment : Fragment() {
 
         txtPlotDesc.text = userPlotDesc
 
-        //fun AutoCompleteTextView.showDropdown(adapter: ArrayAdapter<String>?) {
-        //    if(!TextUtils.isEmpty(this.text.toString())){
-        //        adapter?.filter?.filter(null)
-        //    }
-        // }
+        val cropTypes   = arrayOf("Trigo","Soja", "Maiz")
+        val cropSpinner : Spinner = v.findViewById(R.id.cropTypeSpinner)
 
-        // Not working - is context ok ? requireContext()
+        val spinnerAdapter = ArrayAdapter(requireContext(),
+        android.R.layout.simple_spinner_item, cropTypes)
 
-        var cropOptions = arrayOf("Trigo","Soja", "Maiz")
+        spinnerAdapter.setDropDownViewResource(
+            android.R.layout.simple_spinner_dropdown_item
+        )
 
-        val arrayAdapter : ArrayAdapter<String> = ArrayAdapter<String>(
-            requireContext(), android.R.layout.simple_list_item_1, cropOptions)
-
-        txtAutocompleteCropType.threshold = 1
-        txtAutocompleteCropType.setAdapter(arrayAdapter)
-        txtAutocompleteCropType.setText(cropType)
-
-        // txtAutocompleteCropType.showDropdown(arrayAdapter)
+        cropSpinner.adapter = spinnerAdapter
+        cropSpinner.setSelection(spinnerAdapter.getPosition(cropType))
 
         // CREATE a user
         btnCreateUser.setOnClickListener {
@@ -124,7 +119,8 @@ class SingleUserFragment : Fragment() {
             var userIsAdmin = txtIsAdmin.isChecked
             var plotCity    = txtCity.text.toString()
             var plotDesc    = txtPlotDesc.text.toString()
-            var cropType    = txtAutocompleteCropType.text.toString()
+            // var cropType    = txtAutocompleteCropType.text.toString()
+            var cropType    = cropSpinner.selectedItem.toString()
 
             singleUserViewModel.createUser(
                 userName,
@@ -133,7 +129,7 @@ class SingleUserFragment : Fragment() {
                 userIsAdmin,
                 plotCity,
                 plotDesc,
-                cropType
+                cropType,
             )
 
             v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToUserListFragment2())
@@ -148,7 +144,7 @@ class SingleUserFragment : Fragment() {
             var userIsAdmin = txtIsAdmin.isChecked
             var plotCity    = txtCity.text.toString()
             var plotDesc    = txtPlotDesc.text.toString()
-            var cropType    = txtAutocompleteCropType.text.toString()
+            var cropType    = cropSpinner.selectedItem.toString()
 
             singleUserViewModel.updateUser(
                 userId,
