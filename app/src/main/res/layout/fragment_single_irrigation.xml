@@ -11,18 +11,16 @@
         android:id="@+id/txtSingleIrrigationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="79dp"
-        android:layout_marginEnd="163dp"
-        android:layout_marginBottom="633dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="13dp"
         android:text="Info del Riego"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txtIrrigationId"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtIrrigationId"
@@ -30,41 +28,37 @@
         android:layout_height="wrap_content"
         android:text="Id del riego:"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txtIrrigationDate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.185"
+        app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.176" />
+        app:layout_constraintVertical_bias="0.634" />
 
     <TextView
         android:id="@+id/txtIrrigationIdValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="41dp"
         android:text="id"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/recViewNotes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.721"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSingleIrrigationTitle"
-        app:layout_constraintVertical_bias="0.168" />
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toEndOf="@+id/txtIrrigationId"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.258" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recViewNotes"
-        android:layout_width="0dp"
-        android:layout_height="212dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtIrrigationId"
-        app:layout_constraintVertical_bias="0.434" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.624" />
 
     <Button
         android:id="@+id/btnNewComment"
@@ -73,58 +67,56 @@
         android:text="@string/comentario"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.81"
+        app:layout_constraintHorizontal_bias="0.798"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recViewNotes"
-        app:layout_constraintVertical_bias="0.294" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.827" />
 
     <TextView
         android:id="@+id/txtIrrigationDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="36dp"
         android:text="Fecha:"
-        app:layout_constraintEnd_toStartOf="@+id/txtIrrigationDateValue"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.159"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtIrrigationId" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.21" />
 
     <TextView
         android:id="@+id/txtIrrigationDateValue"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="84dp"
+        android:layout_height="19dp"
         android:text="08/011/2022"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtIrrigationIdValue" />
+        app:layout_constraintHorizontal_bias="0.776"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.209" />
 
     <TextView
         android:id="@+id/txtIrrigationWater"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="54dp"
+        android:layout_width="130dp"
+        android:layout_height="19dp"
         android:text="Cantidad de agua (L)"
-        app:layout_constraintBottom_toTopOf="@+id/recViewNotes"
-        app:layout_constraintEnd_toStartOf="@+id/txtIrrigationWaterValue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtIrrigationDate"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.312" />
 
     <TextView
         android:id="@+id/txtIrrigationWaterValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginBottom="49dp"
+        android:layout_width="16dp"
+        android:layout_height="19dp"
         android:text="10"
-        app:layout_constraintBottom_toTopOf="@+id/recViewNotes"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtIrrigationDateValue"
-        app:layout_constraintVertical_bias="0.833" />
+        app:layout_constraintHorizontal_bias="0.767"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.312" />
 </androidx.constraintlayout.widget.ConstraintLayout>
