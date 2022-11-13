@@ -22,6 +22,9 @@ class IrrigationListViewModel( private val nodeRepository: NodeRepository = Node
         MutableLiveData<List<IrrigationData>>()
     }
 
+    fun clearData() {
+        irrigationListLive.value = null
+    }
 
     internal fun getIrrigationList(idPlot : Int) {
 
@@ -43,6 +46,8 @@ class IrrigationListViewModel( private val nodeRepository: NodeRepository = Node
             }
         }
     }
+
+
 
 
 

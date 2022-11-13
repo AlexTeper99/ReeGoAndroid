@@ -71,4 +71,9 @@ class IrrigationListFragment : Fragment() {
 
     }
 
+    override fun onDestroy(){
+        super.onDestroy()
+        irrigationListViewModel.clearData()
+    }
+
 }

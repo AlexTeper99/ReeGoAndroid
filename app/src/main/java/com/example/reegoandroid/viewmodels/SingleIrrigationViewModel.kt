@@ -11,15 +11,20 @@ import kotlinx.coroutines.launch
 
 class SingleIrrigationViewModel(private val nodeRepository: NodeRepository = NodeRepository(NodeApi.instance!!)) : ViewModel() {
     init {
+
         // TODO get irrigation id
 
-        this@SingleIrrigationViewModel.getComments(1)
+        //this@SingleIrrigationViewModel.getComments(1)
     }
 
     var commentList: MutableList<NoteData> = mutableListOf()
 
     val commentListLive: MutableLiveData<List<NoteData>> by lazy {
         MutableLiveData<List<NoteData>>()
+    }
+
+    fun clearData() {
+        commentListLive.value = null
     }
 
     internal fun getComments(irrId:Int) {

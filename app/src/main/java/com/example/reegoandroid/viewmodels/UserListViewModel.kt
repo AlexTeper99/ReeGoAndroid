@@ -21,6 +21,10 @@ class UserListViewModel(private val nodeRepository: NodeRepository = NodeReposit
         MutableLiveData<List<UserData>>()
     }
 
+    fun clearData() {
+        userListLive.value = null
+    }
+
     internal fun getAllUsers() {
 
 

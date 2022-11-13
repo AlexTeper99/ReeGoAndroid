@@ -105,4 +105,9 @@ class SingleIrrigationFragment : Fragment() {
 
     }
 
+    override fun onDestroy(){
+        super.onDestroy()
+        singleIrrigationViewModel.clearData()
+    }
+
 }

@@ -99,4 +99,9 @@ class UserListFragment : Fragment() {
 
     }
 
+    override fun onDestroy(){
+        super.onDestroy()
+        userListViewModel.clearData()
+    }
+
 }
