@@ -49,7 +49,7 @@ class IrrigationListFragment : Fragment() {
                 val irrigation = irrigationList[pos];
                 val action = IrrigationListFragmentDirections.actionIrrigationListFragmentToSingleIrrigationFragment2(
                     irrigation.id.toString(),
-                    irrigation.updatedAt,
+                    irrigation.createdAt,
                     irrigation.waterUsed.toString()
                 )
                 v.findNavController().navigate(action)
