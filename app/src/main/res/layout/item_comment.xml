@@ -6,13 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:layout_margin="6dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="40dp"
     android:clickable="true"
-    app:cardBackgroundColor="#498813"
-    app:cardCornerRadius="12dp">
+    app:cardBackgroundColor="#FF018786"
+    app:cardCornerRadius="12dp"
+    app:layout_constraintDimensionRatio="1:1"
+    app:layout_marginBaseline="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="387dp"
-        android:layout_height="50dp">
+        android:layout_width="375dp"
+        android:layout_height="49dp"
+        android:layout_marginLeft="30sp">
 
 
         <TextView
