@@ -5,18 +5,23 @@
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="4dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="4dp"
     app:cardBackgroundColor="#498813"
-    app:cardCornerRadius="50dp">
+    app:cardCornerRadius="50dp"
+    app:layout_marginBaseline="21dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/cardview_default_elevation">
 
         <TextView
             android:id="@+id/txtWater"
-            android:layout_width="wrap_content"
+            android:layout_width="37dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="96dp"
+            android:layout_marginStart="40dp"
             android:layout_marginEnd="4dp"
             android:text="Agua"
             android:textColor="#FFFFFF"
@@ -28,7 +33,7 @@
 
         <TextView
             android:id="@+id/txtDateValue"
-            android:layout_width="166dp"
+            android:layout_width="wrap_content"
             android:layout_height="27dp"
             android:layout_marginTop="27dp"
             android:layout_marginEnd="32dp"
