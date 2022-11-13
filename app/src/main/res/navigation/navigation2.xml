@@ -59,12 +59,6 @@
         <argument
             android:name="userIsAdmin"
             app:argType="boolean" />
-        <action
-            android:id="@+id/action_singleUserFragment2_to_userListFragment2"
-            app:destination="@id/userListFragment2" />
-        <action
-            android:id="@+id/action_singleUserFragment2_to_userListFragment22"
-            app:destination="@id/userListFragment2" />
         <argument android:name="isEdit"
             app:argType="boolean" />
         <argument
@@ -79,6 +73,9 @@
             android:name="userCropType"
             app:argType="string"
             android:defaultValue='"Tipo Cultivo"' />
+        <action
+            android:id="@+id/action_singleUserFragment2_to_backofficeFragment"
+            app:destination="@id/backofficeFragment" />
     </fragment>
     <fragment
         android:id="@+id/backofficeFragment"

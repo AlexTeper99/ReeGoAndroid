@@ -20,7 +20,7 @@ class SingleUserFragment : Fragment() {
     private lateinit var txtEmail     : TextView
     private lateinit var txtPassword  : TextView
     private lateinit var txtCity      : TextView
-    private lateinit var txtIsAdmin   : CheckBox
+
 
     private lateinit var txtPlotDesc : TextView
     private lateinit var txtAutocompleteCropType : AutoCompleteTextView
@@ -47,7 +47,7 @@ class SingleUserFragment : Fragment() {
         txtEmail     = v.findViewById(R.id.editTextUserEmail)
         txtPassword  = v.findViewById(R.id.editTextUserPassword)
         txtCity      = v.findViewById(R.id.editTextCity)
-        txtIsAdmin   = v.findViewById(R.id.userIsAdminCheckbox)
+
 
         txtPlotDesc  = v.findViewById(R.id.editTextPlotDescription)
 
@@ -90,7 +90,7 @@ class SingleUserFragment : Fragment() {
         txtCity.text      = plotCity
 
 //        txtIsAdmin.isVisible = false
-        txtIsAdmin.isChecked = userIsAdmin
+
 
         txtPlotDesc.text = userPlotDesc
 
@@ -115,7 +115,7 @@ class SingleUserFragment : Fragment() {
             var userName    = txtName.text.toString()
             var userEmail   = txtEmail.text.toString()
             var userPass    = txtPassword.text.toString()
-            var userIsAdmin = txtIsAdmin.isChecked
+            var userIsAdmin = false
             //var userIsAdmin = false
             var plotCity    = txtCity.text.toString()
             var plotDesc    = txtPlotDesc.text.toString()
@@ -131,7 +131,7 @@ class SingleUserFragment : Fragment() {
                 cropType,
             )
 
-            v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToUserListFragment2())
+            v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToBackofficeFragment())
         }
 
         // UPDATE a user
@@ -140,7 +140,7 @@ class SingleUserFragment : Fragment() {
             var userName    = txtName.text.toString()
             var userEmail   = txtEmail.text.toString()
             var userPass    = txtPassword.text.toString()
-            var userIsAdmin = txtIsAdmin.isChecked
+            var userIsAdmin = false
 //            var userIsAdmin = true
             var plotCity    = txtCity.text.toString()
             var plotDesc    = txtPlotDesc.text.toString()
@@ -157,13 +157,13 @@ class SingleUserFragment : Fragment() {
                 cropType
             )
 
-            v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToUserListFragment2())
+            v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToBackofficeFragment())
         }
 
         // DELETE a user
         btnDeleteUser.setOnClickListener {
             singleUserViewModel.deleteUser(userId)
-            v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToUserListFragment2())
+            v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToBackofficeFragment())
 
         }
 
