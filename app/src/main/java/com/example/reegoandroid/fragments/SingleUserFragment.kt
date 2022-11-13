@@ -88,6 +88,8 @@ class SingleUserFragment : Fragment() {
         txtEmail.text     = userEmail
         txtPassword.text  = userPass
         txtCity.text      = plotCity
+
+//        txtIsAdmin.isVisible = false
         txtIsAdmin.isChecked = userIsAdmin
 
         txtPlotDesc.text = userPlotDesc
@@ -114,9 +116,9 @@ class SingleUserFragment : Fragment() {
             var userEmail   = txtEmail.text.toString()
             var userPass    = txtPassword.text.toString()
             var userIsAdmin = txtIsAdmin.isChecked
+            //var userIsAdmin = false
             var plotCity    = txtCity.text.toString()
             var plotDesc    = txtPlotDesc.text.toString()
-            // var cropType    = txtAutocompleteCropType.text.toString()
             var cropType    = cropSpinner.selectedItem.toString()
 
             singleUserViewModel.createUser(
@@ -139,6 +141,7 @@ class SingleUserFragment : Fragment() {
             var userEmail   = txtEmail.text.toString()
             var userPass    = txtPassword.text.toString()
             var userIsAdmin = txtIsAdmin.isChecked
+//            var userIsAdmin = true
             var plotCity    = txtCity.text.toString()
             var plotDesc    = txtPlotDesc.text.toString()
             var cropType    = cropSpinner.selectedItem.toString()
