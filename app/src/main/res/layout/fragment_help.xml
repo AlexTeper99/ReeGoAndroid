@@ -24,8 +24,8 @@
 
     <TextView
         android:id="@+id/txtTitleHelp"
-        android:layout_width="231dp"
-        android:layout_height="25dp"
+        android:layout_width="232dp"
+        android:layout_height="37dp"
         android:text="Bienvenido"
         android:textAlignment="center"
         android:textSize="20sp"
