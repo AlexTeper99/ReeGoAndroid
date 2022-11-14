@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation2"
+    app:startDestination="@id/loginFragment">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.reegoandroid.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.reegoandroid.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment3_to_mainActivity"
+            app:destination="@id/mainActivity" />
+        <action
+            android:id="@+id/action_loginFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_backofficeFragment"
+            app:destination="@id/backofficeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.example.reegoandroid.fragments.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" />
+    <fragment
+        android:id="@+id/userListFragment2"
+        android:name="com.example.reegoandroid.fragments.UserListFragment"
+        android:label="fragment_user_list"
+        tools:layout="@layout/fragment_user_list" >
+        <action
+            android:id="@+id/action_userListFragment2_to_singleUserFragment2"
+            app:destination="@id/singleUserFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleUserFragment2"
+        android:name="com.example.reegoandroid.fragments.SingleUserFragment"
+        android:label="fragment_single_user"
+        tools:layout="@layout/fragment_single_user" >
+        <argument android:name="userId"
+            app:argType="integer" />
+        <argument android:name="userEmail"
+            app:argType="string" />
+        <argument android:name="userPassword"
+            app:argType="string" />
+        <argument
+            android:name="userCropId"
+            app:argType="integer" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <argument
+            android:name="userIsAdmin"
+            app:argType="boolean" />
+        <argument android:name="isEdit"
+            app:argType="boolean" />
+        <argument
+            android:name="userCity"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="userPlotDesc"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="userCropType"
+            app:argType="string"
+            android:defaultValue='"Tipo Cultivo"' />
+        <action
+            android:id="@+id/action_singleUserFragment2_to_backofficeFragment"
+            app:destination="@id/backofficeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/backofficeFragment"
+        android:name="com.example.reegoandroid.fragments.BackofficeFragment"
+        android:label="fragment_backoffice"
+        tools:layout="@layout/fragment_backoffice" >
+        <action
+            android:id="@+id/action_backofficeFragment_to_userListFragment2"
+            app:destination="@id/userListFragment2" />
+        <action
+            android:id="@+id/action_backofficeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+</navigation>
