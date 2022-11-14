@@ -44,13 +44,18 @@ class MyInformationViewModel(
     }
 
 
-
-    internal fun setClimateData(atmospheric_contition: String, humidity: String, location: String, rainDesc: String, raining: String, temperature: String, time: String) {
+    internal fun setClimateData(atmospheric_contition: String, humidity: String, location: String, rainDesc: String, raining: Boolean, temperature: String, time: String) {
         this.atmospheric_contition.postValue(atmospheric_contition)
         this.humidity.postValue(humidity)
         this.location.postValue(location)
         this.rainDesc.postValue(rainDesc)
-        this.raining.postValue(raining)
+
+        if(raining) {
+            this.raining.postValue("Si")
+        } else {
+            this.raining.postValue("No")
+        }
+
         this.temperature.postValue(temperature)
         this.time.postValue(time)
     }
@@ -84,7 +89,7 @@ class MyInformationViewModel(
                 var hu = climateInfo.humidity.toString()
                 var lo = climateInfo.location
                 var rd = climateInfo.rain_desc
-                var ra = climateInfo.raining.toString()
+                var ra = climateInfo.raining
                 var te = climateInfo.temperature.toString()
                 var ti = climateInfo.time
 
