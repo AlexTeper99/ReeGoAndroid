@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/commentCard"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_margin="6dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="40dp"
+    android:clickable="true"
+    app:cardBackgroundColor="#FF018786"
+    app:cardCornerRadius="12dp"
+    app:layout_constraintDimensionRatio="1:1"
+    app:layout_marginBaseline="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="375dp"
+        android:layout_height="49dp"
+        android:layout_marginLeft="30sp">
+
+
+        <TextView
+            android:id="@+id/txtComment"
+            android:layout_width="332dp"
+            android:layout_height="43dp"
+            android:text="Este riego fue Maxime officiis blanditiis aspernatur eveniet aut atque. Cupiditate eos quisquam voluptate"
+            android:textColor="#FFFFFF"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.109"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
