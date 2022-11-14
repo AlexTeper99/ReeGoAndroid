@@ -2,6 +2,7 @@ package com.example.reegoandroid.fragments
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -72,45 +73,59 @@ class LoginFragment : Fragment() {
 
             val scope = CoroutineScope(Dispatchers.Main)
             var loginInfo: LoginData
-            scope.launch {
 
-                val result = nodeRepository.loginUser(usernameInput.text.toString(),  passwordInput.text.toString())
+            var inputUser = usernameInput.text.toString()
+            var inputPassword = passwordInput.text.toString()
+            if( inputUser == null || inputUser == ""  ||  inputPassword == null || inputPassword == ""){
+                var snackbar =  Snackbar.make(v, "Ingrese un usuario o contraseña valido", Snackbar.LENGTH_SHORT).setAction("Action", null)
+                var sbView = snackbar.view
+                sbView.setBackgroundColor(Color.RED)
+                snackbar.show()
+            }else{
+                scope.launch {
 
-                result.onSuccess {
-                    loginInfo = it
-                    println("Login infoo corrutine")
-                    println("---------------------------")
-                    Log.d("idUser", loginInfo.idUser.toString())
-                    Log.d("idPlot", loginInfo.idPlot.toString())
-                    Log.d("city", loginInfo.city)
-                    Log.d("isAdmin", loginInfo.isAdmin.toString())
+                    val result = nodeRepository.loginUser(usernameInput.text.toString(),  passwordInput.text.toString())
 
-                    resultSaveSP  = saveSharedPreferences(loginInfo.idUser.toString(), loginInfo.idPlot.toString(),  loginInfo.city,  loginInfo.isAdmin )
+                    result.onSuccess {
+                        loginInfo = it
+                        println("Login infoo corrutine")
+                        println("---------------------------")
+                        Log.d("idUser", loginInfo.idUser.toString())
+                        Log.d("idPlot", loginInfo.idPlot.toString())
+                        Log.d("city", loginInfo.city)
+                        Log.d("isAdmin", loginInfo.isAdmin.toString())
+
+                        resultSaveSP  = saveSharedPreferences(loginInfo.idUser.toString(), loginInfo.idPlot.toString(),  loginInfo.city,  loginInfo.isAdmin )
 
 
-                    if(resultSaveSP){
-                        val sharedPref : SharedPreferences = requireContext().getSharedPreferences("Credenciales", Context.MODE_PRIVATE)
-                        var isAdmin = sharedPref.getBoolean("IsAdmin", false)!!
+                        if(resultSaveSP){
+                            val sharedPref : SharedPreferences = requireContext().getSharedPreferences("Credenciales", Context.MODE_PRIVATE)
+                            var isAdmin = sharedPref.getBoolean("IsAdmin", false)!!
 
-                        if(isAdmin){
-                            v.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToBackofficeFragment())
+                            if(isAdmin){
+                                v.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToBackofficeFragment())
+                            }else{
+                                v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
+                            }
+
+
+
+
                         }else{
-                            v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
+                            var snackbar =  Snackbar.make(v, "Ingrese un usuario o contraseña valido", Snackbar.LENGTH_SHORT).setAction("Action", null)
+                            var sbView = snackbar.view
+                            sbView.setBackgroundColor(Color.RED)
+                            snackbar.show()
                         }
 
 
-
-
-                    }else{
-                        Snackbar.make(v, "Ingrese un usuario o contraseña valido", Snackbar.LENGTH_SHORT).show()
+                    }.onFailure {
+                        println("Error en a llamada al api -login User")
+                        println("Error: ${it.message}")
                     }
-
-
-                }.onFailure {
-                    println("Error en a llamada al api -login User")
-                    println("Error: ${it.message}")
                 }
             }
+
 
 
 
