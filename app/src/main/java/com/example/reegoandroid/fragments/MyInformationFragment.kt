@@ -68,7 +68,7 @@ class MyInformationFragment : Fragment() {
         }
 
         var location = Observer<String> { location ->
-            locationView.text = "Ubicacioón: $location"
+            locationView.text = "Ubicación: $location"
         }
 
         var raining = Observer<String> { raining ->
