@@ -16,7 +16,6 @@ class SingleNoteViewModel (private val nodeRepository: NodeRepository = NodeRepo
         val scope = CoroutineScope(Dispatchers.Default)
         scope.launch {
 
-
             val result = nodeRepository.deleteComment(commentId);
 
             result.onSuccess {
@@ -46,7 +45,6 @@ class SingleNoteViewModel (private val nodeRepository: NodeRepository = NodeRepo
         }
     }
 
-    // singleNoteViewModel.createComment(newText,irrigationId)
     internal fun createComment(commentText: String, irrigationId: Int) {
         val scope = CoroutineScope(Dispatchers.Default)
         scope.launch {
@@ -60,6 +58,12 @@ class SingleNoteViewModel (private val nodeRepository: NodeRepository = NodeRepo
             }
 
         }
+    }
+
+    internal fun validateInputs(noteText: String): Boolean {
+
+        var maxChars = 300
+        return (noteText != "" && noteText.length < maxChars)
     }
 
 }

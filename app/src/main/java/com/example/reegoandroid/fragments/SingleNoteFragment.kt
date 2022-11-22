@@ -1,7 +1,7 @@
 package com.example.reegoandroid.fragments
 
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.reegoandroid.R
 import com.example.reegoandroid.viewmodels.SingleNoteViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class SingleNoteFragment : Fragment() {
     lateinit var v: View
@@ -33,15 +34,9 @@ class SingleNoteFragment : Fragment() {
 
         txtNoteEditable = v.findViewById(R.id.singleCommentEditText)
 
-
         btnCreateComment = v.findViewById(R.id.createNoteBtn)
         btnUpdateComment = v.findViewById(R.id.updateNoteTextBtn)
         btnDeleteComment = v.findViewById(R.id.deleteNoteBtn)
-
-
-
-
-
 
         return v
 
@@ -53,15 +48,11 @@ class SingleNoteFragment : Fragment() {
         val noteId = SingleNoteFragmentArgs.fromBundle(requireArguments()).noteId
         val irrigationId = SingleNoteFragmentArgs.fromBundle(requireArguments()).irrigationId
         val noteText = SingleNoteFragmentArgs.fromBundle(requireArguments()).noteText
-        Log.d("NOTE ID", noteId.toString())
-
 
         txtNoteEditable.text = noteText
 
 
         val isEdit = SingleNoteFragmentArgs.fromBundle(requireArguments()).isEdit
-        println("IS EDITTTT")
-        println(isEdit)
 
         if (isEdit) {
             btnCreateComment.isVisible = false
@@ -78,16 +69,41 @@ class SingleNoteFragment : Fragment() {
         btnCreateComment.setOnClickListener {
 
             val newText = txtNoteEditable.text.toString()
-            singleNoteViewModel.createComment(newText,irrigationId)
-            v.findNavController().navigate(SingleNoteFragmentDirections.actionSingleNoteFragmentToIrrigationListFragment())
+
+            var validInput = singleNoteViewModel.validateInputs(newText)
+
+            if(validInput) {
+                singleNoteViewModel.createComment(newText,irrigationId)
+                v.findNavController().navigate(SingleNoteFragmentDirections.actionSingleNoteFragmentToIrrigationListFragment())
+            } else {
+                // invalid inputs
+                var snackbar =  Snackbar.make(v, "Ingreso de texto no valido",
+                    Snackbar.LENGTH_SHORT).setAction("Action", null)
+                var sbView = snackbar.view
+                sbView.setBackgroundColor(Color.RED)
+                snackbar.show()
+            }
+
         }
 
         // Update a comment
         btnUpdateComment.setOnClickListener {
 
             val newText = txtNoteEditable.text.toString()
-            singleNoteViewModel.updateComment(noteId, newText)
-            v.findNavController().navigate(SingleNoteFragmentDirections.actionSingleNoteFragmentToIrrigationListFragment())
+            var validInput = singleNoteViewModel.validateInputs(newText)
+
+            if(validInput) {
+                singleNoteViewModel.updateComment(noteId, newText)
+                v.findNavController().navigate(SingleNoteFragmentDirections.actionSingleNoteFragmentToIrrigationListFragment())
+            } else {
+                // invalid inputs
+                var snackbar =  Snackbar.make(v, "Ingreso de texto no valido",
+                    Snackbar.LENGTH_SHORT).setAction("Action", null)
+                var sbView = snackbar.view
+                sbView.setBackgroundColor(Color.RED)
+                snackbar.show()
+            }
+
         }
 
         // Delete a comment by id
