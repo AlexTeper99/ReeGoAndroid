@@ -53,9 +53,6 @@ class MyInformationFragment : Fragment() {
 //        val sharedPref : SharedPreferences = requireContext().getSharedPreferences("Credenciales", Context.MODE_PRIVATE)
 //        val plotCity = sharedPref.getString("city", "")!!
 
-        // TODO FIX ERROR NOT GETTING CITY OK
-        //  es posible que sea un tema de asicronia?
-
         var plotCity = "buenosaires"
         myInformationViewModel.getClimateData(plotCity)
 
