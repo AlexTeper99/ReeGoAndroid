@@ -87,4 +87,26 @@ class SingleUserViewModel (private val nodeRepository: NodeRepository = NodeRepo
         }
     }
 
+    internal fun validateInputs(
+        userName:String,
+        userEmail:String,
+        userPass:String,
+        plotCity: String,
+        plotDesc: String,
+        cropType: String): Boolean {
+
+        var validInputs = false
+
+        validInputs = (
+                userName  != "" &&
+                userEmail != "" &&
+                userPass  != "" &&
+                plotCity  != "" &&
+                plotDesc  != "" &&
+                cropType  != ""
+                )
+
+        return  validInputs
+    }
+
 }

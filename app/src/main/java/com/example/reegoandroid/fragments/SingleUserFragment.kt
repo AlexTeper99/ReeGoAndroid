@@ -1,16 +1,21 @@
 package com.example.reegoandroid.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.reegoandroid.R
 import com.example.reegoandroid.viewmodels.SingleUserViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class SingleUserFragment : Fragment() {
     lateinit var v: View
@@ -20,10 +25,7 @@ class SingleUserFragment : Fragment() {
     private lateinit var txtEmail     : TextView
     private lateinit var txtPassword  : TextView
     private lateinit var txtCity      : TextView
-
-
-    private lateinit var txtPlotDesc : TextView
-    private lateinit var txtAutocompleteCropType : AutoCompleteTextView
+    private lateinit var txtPlotDesc  : TextView
 
     lateinit var btnCreateUser: Button
     lateinit var btnUpdateUser: Button
@@ -47,8 +49,6 @@ class SingleUserFragment : Fragment() {
         txtEmail     = v.findViewById(R.id.editTextUserEmail)
         txtPassword  = v.findViewById(R.id.editTextUserPassword)
         txtCity      = v.findViewById(R.id.editTextCity)
-
-
         txtPlotDesc  = v.findViewById(R.id.editTextPlotDescription)
 
         // Setup Buttons
@@ -91,7 +91,6 @@ class SingleUserFragment : Fragment() {
 
 //        txtIsAdmin.isVisible = false
 
-
         txtPlotDesc.text = userPlotDesc
 
 
@@ -107,6 +106,7 @@ class SingleUserFragment : Fragment() {
         )
 
         cropSpinner.adapter = spinnerAdapter
+        // set the position of the spinner = to the string given by argument
         cropSpinner.setSelection(spinnerAdapter.getPosition(cropType))
 
         // CREATE a user
@@ -121,17 +121,37 @@ class SingleUserFragment : Fragment() {
             var plotDesc    = txtPlotDesc.text.toString()
             var cropType    = cropSpinner.selectedItem.toString()
 
-            singleUserViewModel.createUser(
+            var validInputs : Boolean = singleUserViewModel.validateInputs(
                 userName,
                 userEmail,
                 userPass,
-                userIsAdmin,
                 plotCity,
                 plotDesc,
                 cropType,
             )
 
-            v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToBackofficeFragment())
+            if(validInputs) {
+                // create user
+                singleUserViewModel.createUser(
+                    userName,
+                    userEmail,
+                    userPass,
+                    userIsAdmin,
+                    plotCity,
+                    plotDesc,
+                    cropType,
+                )
+                // redirect
+                v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToBackofficeFragment())
+            } else {
+                // invalid inputs
+                var snackbar =  Snackbar.make(v, "Todos los campos son requeridos",
+                    Snackbar.LENGTH_SHORT).setAction("Action", null)
+                var sbView = snackbar.view
+                sbView.setBackgroundColor(Color.RED)
+                snackbar.show()
+            }
+
         }
 
         // UPDATE a user
@@ -141,23 +161,41 @@ class SingleUserFragment : Fragment() {
             var userEmail   = txtEmail.text.toString()
             var userPass    = txtPassword.text.toString()
             var userIsAdmin = false
-//            var userIsAdmin = true
+            // var userIsAdmin = true
             var plotCity    = txtCity.text.toString()
             var plotDesc    = txtPlotDesc.text.toString()
             var cropType    = cropSpinner.selectedItem.toString()
 
-            singleUserViewModel.updateUser(
-                userId,
+            var validInputs : Boolean = singleUserViewModel.validateInputs(
                 userName,
                 userEmail,
                 userPass,
-                userIsAdmin,
                 plotCity,
                 plotDesc,
-                cropType
+                cropType,
             )
-
-            v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToBackofficeFragment())
+            if(validInputs) {
+                //  update the user
+                singleUserViewModel.updateUser(
+                    userId,
+                    userName,
+                    userEmail,
+                    userPass,
+                    userIsAdmin,
+                    plotCity,
+                    plotDesc,
+                    cropType
+                )
+                // redirect
+                v.findNavController().navigate(SingleUserFragmentDirections.actionSingleUserFragment2ToBackofficeFragment())
+            } else {
+                // invalid inputs
+                var snackbar =  Snackbar.make(v, "Complete todos los campos",
+                    Snackbar.LENGTH_SHORT).setAction("Action", null)
+                var sbView = snackbar.view
+                sbView.setBackgroundColor(Color.RED)
+                snackbar.show()
+            }
         }
 
         // DELETE a user
