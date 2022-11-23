@@ -18,6 +18,8 @@ class IrrigationAdapter(var irrigationList: MutableList<IrrigationData>,  var on
             this.view = v
         }
 
+
+        // preguntar a teper este metodo
         fun setItem(liters : String, date: String){
             var txtWater : TextView = view.findViewById(R.id.txtWater)
             var txtDate : TextView = view.findViewById(R.id.txtDateValue)

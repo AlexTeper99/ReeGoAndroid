@@ -49,7 +49,7 @@ class LoginFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.fragment_login, container, false)
 
-        //findViewByid y codigo
+        //findViewByid y codigo declara
         txtLoginTitulo = v.findViewById(R.id.txtLoginTitle)
         btnLogin = v.findViewById(R.id.btnLogin)
         btnHelp = v.findViewById(R.id.btnHelp)
@@ -99,6 +99,8 @@ class LoginFragment : Fragment() {
 
 
                         if(resultSaveSP){
+
+                            // que hace esta linea de abajo
                             val sharedPref : SharedPreferences = requireContext().getSharedPreferences("Credenciales", Context.MODE_PRIVATE)
                             var isAdmin = sharedPref.getBoolean("IsAdmin", false)!!
 
@@ -151,12 +153,9 @@ class LoginFragment : Fragment() {
 
     }
 
-    private fun saveSharedPreferences(
-        idUser: String,
-        idPlot: String,
-        city: String,
-        isAdmin: Boolean
-    ): Boolean {
+    private fun saveSharedPreferences(idUser: String, idPlot: String, city: String, isAdmin: Boolean): Boolean {
+
+        // preguntar a teper como funciona require context
         val sharedPref : SharedPreferences = requireContext().getSharedPreferences("Credenciales", Context.MODE_PRIVATE)
 
         val editor = sharedPref.edit()
@@ -167,6 +166,7 @@ class LoginFragment : Fragment() {
         editor.putString("City",city)
         editor.apply()
 
+        // q es el falla SP
         var userId = sharedPref.getString("UserId", "FALLA SP")!!
         var plotId = sharedPref.getString("UserPlot", "FALLA SP")!!
         var city = sharedPref.getString("City", "FALLA SP")!!
