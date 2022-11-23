@@ -35,9 +35,8 @@ class HelpFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
-       txtHelpTitle.text = helpViewModel.titleText
-       txtHelp.text = helpViewModel.textHelp
+        txtHelpTitle.text = helpViewModel.titleText
+        txtHelp.text = helpViewModel.textHelp
         (activity as MainActivity2?)?.setLoggedIn(true)
     }
 

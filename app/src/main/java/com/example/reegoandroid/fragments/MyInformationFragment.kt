@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import com.example.reegoandroid.MainActivity2
 import com.example.reegoandroid.R
 import com.example.reegoandroid.viewmodels.MyInformationViewModel
 
@@ -122,8 +123,8 @@ class MyInformationFragment : Fragment() {
             println(isAdmin)
 
 
-            // (activity as MainActivity?)?.setLoggedIn(false)
-           v.findNavController().navigate(MyInformationFragmentDirections.actionMyInformationFragmentToMainActivity2())
+            (activity as MainActivity2?)?.setLoggedIn(false)
+            v.findNavController().navigate(MyInformationFragmentDirections.actionMyInformationFragmentToMainActivity2())
         }
 
     }

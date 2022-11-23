@@ -65,6 +65,7 @@ class LoginFragment : Fragment() {
         super.onStart()
 
         txtLoginTitulo.text = loginViewModel.tituloLogin
+
         (activity as MainActivity2?)?.setLoggedIn(false)
 
         btnLogin.setOnClickListener {
@@ -77,6 +78,7 @@ class LoginFragment : Fragment() {
 
             var inputUser = usernameInput.text.toString()
             var inputPassword = passwordInput.text.toString()
+
             if( inputUser == null || inputUser == ""  ||  inputPassword == null || inputPassword == ""){
                 var snackbar =  Snackbar.make(v, "Ingrese un usuario o contraseña valido", Snackbar.LENGTH_SHORT).setAction("Action", null)
                 var sbView = snackbar.view
@@ -128,8 +130,7 @@ class LoginFragment : Fragment() {
 
         }
 
-
-
+        
         btnHelp.setOnClickListener{
             val navigateLoginToHelp = LoginFragmentDirections.actionLoginFragmentToHelpFragment()
 
