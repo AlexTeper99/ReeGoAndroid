@@ -20,6 +20,7 @@ class SingleUserViewModel (private val nodeRepository: NodeRepository = NodeRepo
         plotDesc: String,
         cropType: String
     ) {
+        //co rutina, ejecuta metodos asincronicos uno atras de otros(encolable)
         val scope = CoroutineScope(Dispatchers.Default)
         scope.launch {
 

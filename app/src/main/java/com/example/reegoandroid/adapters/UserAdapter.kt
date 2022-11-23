@@ -50,7 +50,7 @@ class UserAdapter(var userList: MutableList<UserData>,  var onClick : (Int) -> U
             onClick(i)
         }
     }
-
+ 
     override fun getItemCount(): Int {
         return userList.size
     }

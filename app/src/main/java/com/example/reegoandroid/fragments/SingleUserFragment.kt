@@ -62,7 +62,7 @@ class SingleUserFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-
+        //agarra valores de la navigation y los guarda mapeando con los del xml(pueden llegar vacios o llenos)
         val userId      = SingleUserFragmentArgs.fromBundle(requireArguments()).userId
         var userName    = SingleUserFragmentArgs.fromBundle(requireArguments()).userName
         var userEmail   = SingleUserFragmentArgs.fromBundle(requireArguments()).userEmail
@@ -96,17 +96,22 @@ class SingleUserFragment : Fragment() {
 
 
         // Setup Spinner to select crop type
+        //crea el array con los valores
         val cropTypes   = arrayOf("Trigo","Soja", "Maiz")
+        //setea la apariencia del spinner en el fragment
         val cropSpinner : Spinner = v.findViewById(R.id.cropTypeSpinner)
-
+        //crea adaptador de spinner con el contexto, la vista y el listado
+        //el layout lo saca de la libreria de android
+        //y le asigna el array declarado arriba en el adapter
         val spinnerAdapter = ArrayAdapter(requireContext(),
         android.R.layout.simple_spinner_item, cropTypes)
-
+        //setea el layout de dropdown para la visual
         spinnerAdapter.setDropDownViewResource(
             android.R.layout.simple_spinner_dropdown_item
         )
-
+        //asigna el adapter al spinner en el fragment.
         cropSpinner.adapter = spinnerAdapter
+        //asigna valor seleccionado que llego por parametros.
         cropSpinner.setSelection(spinnerAdapter.getPosition(cropType))
 
         // CREATE a user

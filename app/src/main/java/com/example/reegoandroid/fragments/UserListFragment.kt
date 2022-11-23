@@ -45,10 +45,10 @@ class UserListFragment : Fragment() {
         super.onStart()
 
         userListViewModel.getAllUsers()
-
+        //observe == listener del live data en cuanto a cambios en ese array.(se ejecuta con el postvalue)
         userListViewModel.userListLive.observe(viewLifecycleOwner) { userList ->
 
-
+            //Adapters son para manejar listas y visuales con las listas de objetos de la bd
             userAdapter = UserAdapter(userList.toMutableList()) { pos: Int ->
                 val action = UserListFragmentDirections.actionUserListFragment2ToSingleUserFragment2(
 
@@ -64,6 +64,7 @@ class UserListFragment : Fragment() {
                     userList[pos].cropType,
 
                 )
+                //declarando accion de clickeo cuando se toca un usuario (navigate a pantalla de modificacion)
                 v.findNavController().navigate(action)
             }
 

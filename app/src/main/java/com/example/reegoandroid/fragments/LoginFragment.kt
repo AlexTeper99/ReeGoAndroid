@@ -61,8 +61,8 @@ class LoginFragment : Fragment() {
     }
 
     override fun onStart() {
-        super.onStart()
-
+       super.onStart()
+        //on create view, recolecto toda la info del fragment y me la guardo en las variables del archivo kt para luego hacer el login con node.
         txtLoginTitulo.text = loginViewModel.tituloLogin
 
 
