@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import com.example.reegoandroid.MainActivity2
 import com.example.reegoandroid.R
 import com.example.reegoandroid.viewmodels.LoginViewModel
 import com.example.reegoandroid.viewmodels.node.LoginData
@@ -41,7 +42,8 @@ class LoginFragment : Fragment() {
         fun newInstance() = LoginFragment()
     }
 
-   private val loginViewModel : LoginViewModel by viewModels()
+    private val loginViewModel : LoginViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +58,6 @@ class LoginFragment : Fragment() {
         usernameInput = v.findViewById(R.id.usernameInput)
         passwordInput = v.findViewById(R.id.passwordInput)
 
-
         return v
     }
 
@@ -64,9 +65,9 @@ class LoginFragment : Fragment() {
         super.onStart()
 
         txtLoginTitulo.text = loginViewModel.tituloLogin
+        (activity as MainActivity2?)?.setLoggedIn(false)
 
-
-        btnLogin.setOnClickListener{
+        btnLogin.setOnClickListener {
 
           //  val loginInfo = loginViewModel.login(usernameInput.text.toString(), passwordInput.text.toString())
             txtLoginTitulo.text = loginViewModel.tituloLogin
@@ -81,7 +82,7 @@ class LoginFragment : Fragment() {
                 var sbView = snackbar.view
                 sbView.setBackgroundColor(Color.RED)
                 snackbar.show()
-            }else{
+            } else {
                 scope.launch {
 
                     val result = nodeRepository.loginUser(usernameInput.text.toString(),  passwordInput.text.toString())
@@ -97,27 +98,26 @@ class LoginFragment : Fragment() {
 
                         resultSaveSP  = saveSharedPreferences(loginInfo.idUser.toString(), loginInfo.idPlot.toString(),  loginInfo.city,  loginInfo.isAdmin )
 
+                        if(resultSaveSP) {
 
-                        if(resultSaveSP){
+                            // call activity setLoggedIn / true
+                            (activity as MainActivity2?)?.setLoggedIn(true)
+
                             val sharedPref : SharedPreferences = requireContext().getSharedPreferences("Credenciales", Context.MODE_PRIVATE)
                             var isAdmin = sharedPref.getBoolean("IsAdmin", false)!!
 
-                            if(isAdmin){
+                            if(isAdmin) {
                                 v.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToBackofficeFragment())
-                            }else{
+                            } else {
                                 v.findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToMainActivity())
                             }
 
-
-
-
-                        }else{
+                        } else {
                             var snackbar =  Snackbar.make(v, "Ingrese un usuario o contraseña valido", Snackbar.LENGTH_SHORT).setAction("Action", null)
                             var sbView = snackbar.view
                             sbView.setBackgroundColor(Color.RED)
                             snackbar.show()
                         }
-
 
                     }.onFailure {
                         println("Error en a llamada al api -login User")
@@ -125,15 +125,6 @@ class LoginFragment : Fragment() {
                     }
                 }
             }
-
-
-
-
-
-
-
-
-
 
         }
 
@@ -146,9 +137,6 @@ class LoginFragment : Fragment() {
         }
 
         // Admin Screen / Should call after login with admin user
-
-
-
     }
 
     private fun saveSharedPreferences(

@@ -1,12 +1,13 @@
 package com.example.reegoandroid.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.reegoandroid.MainActivity2
 import com.example.reegoandroid.R
 import com.example.reegoandroid.viewmodels.HelpViewModel
 
@@ -37,6 +38,7 @@ class HelpFragment : Fragment() {
 
        txtHelpTitle.text = helpViewModel.titleText
        txtHelp.text = helpViewModel.textHelp
+        (activity as MainActivity2?)?.setLoggedIn(true)
     }
 
 

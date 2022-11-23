@@ -64,7 +64,7 @@ class MyInformationViewModel(
 
         val scope = CoroutineScope(Dispatchers.Default)
 
-        //  ! TODO GET USER / PLOT CITY DATA from session
+        //
         scope.launch(Dispatchers.Default) {
 
 

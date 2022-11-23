@@ -122,7 +122,7 @@ class MyInformationFragment : Fragment() {
             println(isAdmin)
 
 
-
+            // (activity as MainActivity?)?.setLoggedIn(false)
            v.findNavController().navigate(MyInformationFragmentDirections.actionMyInformationFragmentToMainActivity2())
         }
 
