@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
-import com.example.reegoandroid.MainActivity2
 import com.example.reegoandroid.R
 import com.example.reegoandroid.viewmodels.BackofficeViewModel
 
@@ -94,7 +93,6 @@ class BackofficeFragment : Fragment() {
 
             val sharedPref : SharedPreferences = requireContext().getSharedPreferences("Credenciales", Context.MODE_PRIVATE)
             val editor = sharedPref.edit()
-            (activity as MainActivity2?)?.setLoggedIn(false)
 
             editor.putString("UserId", "0")
             editor.putString("UserPlot", "0")
